@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/test_login/static/css/main.9bf6924a.chunk.css",
+    "main.js": "/test_login/static/js/main.5238bc8a.chunk.js",
+    "main.js.map": "/test_login/static/js/main.5238bc8a.chunk.js.map",
+    "runtime-main.js": "/test_login/static/js/runtime-main.ff81e355.js",
+    "runtime-main.js.map": "/test_login/static/js/runtime-main.ff81e355.js.map",
+    "static/js/2.8cec1156.chunk.js": "/test_login/static/js/2.8cec1156.chunk.js",
+    "static/js/2.8cec1156.chunk.js.map": "/test_login/static/js/2.8cec1156.chunk.js.map",
+    "index.html": "/test_login/index.html",
+    "precache-manifest.e57e0c98e4fa0423c6407cfead9e048d.js": "/test_login/precache-manifest.e57e0c98e4fa0423c6407cfead9e048d.js",
+    "service-worker.js": "/test_login/service-worker.js",
+    "static/css/main.9bf6924a.chunk.css.map": "/test_login/static/css/main.9bf6924a.chunk.css.map",
+    "static/js/2.8cec1156.chunk.js.LICENSE.txt": "/test_login/static/js/2.8cec1156.chunk.js.LICENSE.txt",
+    "static/media/rabbit.png": "/test_login/static/media/rabbit.69b72742.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ff81e355.js",
+    "static/js/2.8cec1156.chunk.js",
+    "static/css/main.9bf6924a.chunk.css",
+    "static/js/main.5238bc8a.chunk.js"
+  ]
+}

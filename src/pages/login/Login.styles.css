@@ -1,0 +1,23 @@
+.reg{
+    background-color: #ffffff;
+    border-color: #D65DB1;
+    color: #D65DB1;
+}
+
+.reg:hover{
+    background-color: #D65DB1;
+    border-color: #ffffff;
+    
+}
+
+.reg:active{
+    background-color: #D65DB1;
+    border-color: #ffffff;
+}
+
+.vertcen{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
