@@ -4,6 +4,8 @@ import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
 import InputForm from "../../components/inputs-form/InputForm.component";
 import "./Login.styles.css"
 import Logo from "../../assets/rabbit.png"
+import Tilt from 'react-tilt';
+
 
 
 class Login extends Component {
@@ -32,7 +34,12 @@ class Login extends Component {
           <Container>
             <Row>
               <Col className={clname}>
-                <Image src={Logo} style={{ height: "300px" }} fluid/>
+              
+              <Tilt className="Tilt" options={{ max : 25 }} >
+              <Image src={Logo} style={{ height: "300px" }} fluid/>
+            </Tilt>
+                
+                
                 <Form className="mt-3 ">
                   <InputForm type="email" placeholder="user" icon={faUser} />
                   <InputForm  type="password" placeholder="Password"  icon={faKey}/>
