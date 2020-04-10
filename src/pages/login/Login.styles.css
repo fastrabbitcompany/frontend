@@ -1,13 +1,13 @@
 @media only screen and (min-width: 600px) {
     .widthChange {
-      width: 50%;
+      width: 40%;
       
     }
   }
 
 .login{
     text-align: center;
-    background-color: rgba(132, 94, 194, 0.2);
+    background-image: linear-gradient(to bottom right,rgba(132, 94, 194, 0.6), rgba(132, 94, 194, 0.1));
 }
 
 .reg{

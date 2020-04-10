@@ -9,7 +9,7 @@ class Register extends React.Component {
   render(){
   return(
     <div className="register justify-content-center align-items-center">
-      <Card className="card-register m-4 shadow-lg">
+      <Card className="card-register m-4 shadow-lg" style={{borderRadius:"35px"}}>
         <Card.Body>
           <Card.Title className="title-register">Create Account</Card.Title>
           <Form className="my-4">

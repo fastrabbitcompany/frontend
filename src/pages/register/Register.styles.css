@@ -1,6 +1,6 @@
 .register{
     text-align: center;
-    background-color: rgba(132, 94, 194, 0.2);
+    background-image: linear-gradient(to bottom right,rgba(132, 94, 194, 0.7), rgba(132, 94, 194, 0.2));
     display: flex;
 }
 
