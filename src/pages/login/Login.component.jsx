@@ -11,48 +11,33 @@ import Tilt from 'react-tilt';
 class Login extends Component {
     constructor() {
       super();
-      this.state = {
-        width: window.innerWidth
-      };
+     
     }
   
     componentDidMount() {
-      window.addEventListener("resize", this.resize.bind(this));
-      console.log(this.props)
-      this.resize();
+     
     }
   
-    resize() {
-      this.setState({ width: window.innerWidth });
-    }
+    
   
     render() {
-      let clname = ""
-      this.state.width >= 600 ? clname = "vertcen w-50" : clname = "vertcen";
       return (
         
-          <Container>
-            <Row>
-              <Col className={clname}>
-              
+          <Container className="vertcen h-100">
+            <Row className="h-100 d-flex justify-content-center align-items-center">
+              <Col>
               <Tilt className="Tilt" options={{ max : 25 }} >
               <Image src={Logo} style={{ height: "300px" }} fluid/>
             </Tilt>
                 
                 
                 <Form className="mt-3 ">
-                  <InputForm type="email" placeholder="user" icon={faUser} />
+                  <InputForm type="email" placeholder="User" icon={faUser} />
                   <InputForm  type="password" placeholder="Password"  icon={faKey}/>
   
-                  <Button className="w-100" type="submit"
-                    style={{
-                      backgroundColor: "#D65DB1",
-                      borderColor: "#ffffff"
-                    }}
-                  >
-                    Log In
-                  </Button>
+                  <Button variant="none" className="prim w-100" type="submit"> Log In </Button>
                   <Button
+                    variant = "none"
                     className="reg w-100 mt-2"
                     onClick = {() => this.props.history.push("/register")}
                   >

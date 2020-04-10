@@ -1,23 +1,36 @@
+@media only screen and (min-width: 600px) {
+    .vertcen {
+      width: 50%;
+    }
+  }
+
 .reg{
-    background-color: #ffffff;
-    border-color: #D65DB1;
-    color: #D65DB1;
+    background-color: #845ec2;
+    border-color: #ffffff;
+    color: #ffffff;
 }
 
+
+
 .reg:hover{
-    background-color: #D65DB1;
+    background-color: rgba(132, 94, 194, 0.7);
     border-color: #ffffff;
+    color: #ffffff;
     
 }
 
-.reg:active{
+
+.prim{
     background-color: #D65DB1;
     border-color: #ffffff;
+    color: #ffffff;
 }
 
-.vertcen{
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-  }
+.prim:hover{
+    background-color: rgba(214,93,177,0.7);
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+
+
