@@ -38,7 +38,7 @@ class Login extends Component {
                   <Button variant="none" className="prim w-100" type="submit"> Log In </Button>
                   <Button
                     variant = "none"
-                    className="reg2 w-100 mt-2"
+                    className="reg w-100 mt-2"
                     onClick = {() => this.props.history.push("/register")}
                   >
                     Sign Up
