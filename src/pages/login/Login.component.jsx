@@ -22,12 +22,12 @@ class Login extends Component {
   
     render() {
       return (
-        
-          <Container className="vertcen h-100">
+          <div className="login h-100">
+          <Container className="widthChange h-100">
             <Row className="h-100 d-flex justify-content-center align-items-center">
               <Col>
               <Tilt className="Tilt" options={{ max : 25 }} >
-              <Image src={Logo} style={{ height: "300px" }} fluid/>
+              <Image src={Logo} style={{ height: "300px"}} fluid/>
             </Tilt>
                 
                 
@@ -47,7 +47,7 @@ class Login extends Component {
               </Col>
             </Row>
           </Container>
-       
+          </div>
       );
     }
   }
