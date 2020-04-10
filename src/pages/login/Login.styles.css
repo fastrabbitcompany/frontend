@@ -12,7 +12,6 @@
 
 .reg{
     background-color: #845ec2;
-    border-color: #ffffff;
     color: #ffffff;
 }
 
@@ -21,21 +20,20 @@
 
 .reg:hover{
     background-color: rgba(132, 94, 194, 0.7);
-    border-color: #ffffff;
+    
     color: #ffffff;
     
 }
 
-
 .prim{
-    background-color: #D65DB1;
-    border-color: #ffffff;
+    background-color: rgba(214,93,177,0.8);
+    
     color: #ffffff;
 }
 
 .prim:hover{
     background-color: rgba(214,93,177,0.7);
-    border-color: #ffffff;
+    
     color: #ffffff;
 }
 
