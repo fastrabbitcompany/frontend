@@ -17,27 +17,10 @@
   }
 
 .title-register{
-    font-size: 30px;
+    font-size: 40px;
     color: rgba(132, 94, 194, 1);
     margin-bottom: 50px;
 }
 
-.label-register{
-    /* font-weight: bold; */
-}
-
-.reg2{
-    background-color: #ffffff;
-    border-color: #845ec2;
-    color: #845ec2;
-}
 
 
-
-
-.reg2:hover{
-    background-color: rgba(132, 94, 194, 0.7);
-    
-    color: #ffffff;
-    
-}

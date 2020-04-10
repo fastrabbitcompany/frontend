@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Container, Row, Col, Form, Image } from "react-bootstrap";
+import { Button, Container, Row, Col, Form, Image, Card } from "react-bootstrap";
 import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
 import InputForm from "../../components/inputs-form/InputForm.component";
 import "./Login.styles.css"
@@ -26,6 +26,7 @@ class Login extends Component {
           <Container className="widthChange h-100">
             <Row className="h-100 d-flex justify-content-center align-items-center">
               <Col>
+              <Card className="p-4 shadow-lg" style={{borderRadius:"35px"}}>
               <Tilt className="Tilt" options={{ max : 25 }} >
               <Image src={Logo} style={{ height: "300px"}} fluid/>
             </Tilt>
@@ -44,6 +45,7 @@ class Login extends Component {
                     Sign Up
                   </Button>
                 </Form>
+                </Card>
               </Col>
             </Row>
           </Container>
