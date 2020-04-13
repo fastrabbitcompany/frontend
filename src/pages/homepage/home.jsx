@@ -10,10 +10,16 @@ import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {faHistory} from "@fortawesome/free-solid-svg-icons";
 import {faCog} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import box from "../../assets/box.png"
+import recargar from "../../assets/recargar.png"
+import circle from "../../assets/circle.png"
+import cuadros from "../../assets/cuadros.png"
+import { Button, Container, Row, Col, Form, Image, Card } from "react-bootstrap";
 
 function homepage(){
   return(
-    <React.Fragment>
+
+  <React.Fragment>
       <div className="Homecontainer">
         <div className="HomeHeader">
           <FontAwesomeIcon className = "HomeArrow" icon = {faArrowLeft} size = "2x"/>
@@ -78,6 +84,38 @@ function homepage(){
 
         </div>
       </div>  
+	<div className="homepageMovil">
+		<Container className="createShipping">
+			<Row className="createRow">
+				<Col xs="6" className="boxContainer">
+					<Image  className ="box" src={box} />
+				</Col>	
+				
+				<Col xs="6" className="createText">
+					<p className="textBanner"> Crear un nuevo envio</p>
+				</Col>
+			</Row>	
+			<Row>
+				<Col>
+					<p className="textPastShippings"> Envios Anteriores</p>
+				</Col>
+			</Row>
+			<Row className="pastShippings">
+
+			</Row>
+			<Row className="bottomMenu">
+				<Col>
+					<Button variant="none" class="none"> <Image src={recargar}/> </Button>			
+				</Col>
+				<Col>
+					<Button variant="none"> <Image src={circle}/> </Button>			
+				</Col>
+				<Col>
+					<Button variant="none"> <Image src={cuadros}/> </Button>			
+				</Col>
+			</Row>
+		</Container>   
+	</div>
     </React.Fragment>
   );
 }
