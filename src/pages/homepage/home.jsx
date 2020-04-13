@@ -105,7 +105,7 @@ function homepage(){
 			</Row>
 			<Row className="bottomMenu">
 				<Col>
-					<Button variant="none" class="none"> <Image src={recargar}/> </Button>			
+					<Button variant="none"> <Image src={recargar}/> </Button>			
 				</Col>
 				<Col>
 					<Button variant="none"> <Image src={circle}/> </Button>			
