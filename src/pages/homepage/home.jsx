@@ -24,6 +24,7 @@ function homepage(){
         <div className="HomeHeader">
           <FontAwesomeIcon className = "HomeArrow" icon = {faArrowLeft} size = "2x"/>
           <FontAwesomeIcon className = "HomeSearch" icon = {faSearch} size = "2x"/>
+          <Button >Sign Out</Button>
         </div>
         
         <div className = "HomeUser">

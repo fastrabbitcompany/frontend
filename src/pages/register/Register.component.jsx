@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Col, Button, Container, Row, Card } from "react-bootstrap";
 import "./Register.styles.css";
+import { withRouter } from 'react-router-dom';
 
 class Register extends React.Component {
   constructor(){
@@ -70,4 +71,4 @@ class Register extends React.Component {
   }
 };
 
-export default Register;
+export default withRouter(Register);
