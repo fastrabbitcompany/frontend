@@ -26,17 +26,17 @@ class App extends Component {
   }
 
   componentDidMount(){
-    let IsLoggedIn = this.cookies.get('IsLoggedIn');
-    console.log(IsLoggedIn)
+    let Logged = this.cookies.get('IsLoggedIn');
+    console.log(Logged)
     this.setState({
-      isLoggedIn: IsLoggedIn
+      isLoggedIn: Logged
     });
   }
 
   render() {
     return (
       <Switch>
-        <Route exact path="/" render={() => this.state.isLoggedIn? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>
+        <Route exact path="/" render={() => this.state.isLoggedIn == "true"? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>
         <Route exact path="/register" render={() => <Register handler={this.handleLoggedIn}/>} />
       </Switch>
     );

@@ -34,7 +34,7 @@ class Home extends React.Component{
         <div className="HomeHeader">
           <FontAwesomeIcon className = "HomeArrow" icon = {faArrowLeft} size = "2x"/>
           <FontAwesomeIcon className = "HomeSearch" icon = {faSearch} size = "2x"/>
-          <Button onClick={ () => this.props.handler(false)}>Sign Out</Button>
+          <Button onClick={ () => this.props.handler("false")}>Sign Out</Button>
         </div>
         
         <div className = "HomeUser">
