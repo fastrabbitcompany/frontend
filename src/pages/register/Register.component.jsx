@@ -1,11 +1,13 @@
 import React from "react";
-import { Form, Col, Button, Container, Row, Card } from "react-bootstrap";
+import { Form, Col, Button, Row, Card } from "react-bootstrap";
 import "./Register.styles.css";
-import { withRouter } from 'react-router-dom';
 
 class Register extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    this.state = {
+      
+    }
   }
   render(){
   return(
@@ -71,4 +73,4 @@ class Register extends React.Component {
   }
 };
 
-export default withRouter(Register);
+export default Register;

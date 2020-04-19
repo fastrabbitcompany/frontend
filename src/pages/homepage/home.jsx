@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './home.style.css';
+import  './home.style.css';
 import Logo from '../../assets/rabbitNL.png';
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {faCalendarAlt} from "@fortawesome/free-solid-svg-icons";
@@ -14,17 +14,27 @@ import box from "../../assets/box.png"
 import recargar from "../../assets/recargar.png"
 import circle from "../../assets/circle.png"
 import cuadros from "../../assets/cuadros.png"
-import { Button, Container, Row, Col, Form, Image, Card } from "react-bootstrap";
+import { Button, Container, Row, Col, Image } from "react-bootstrap";
 
-function homepage(){
+class Home extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state = {
+      
+    }
+  }
+
+
+
+  render(){
   return(
-
   <React.Fragment>
       <div className="Homecontainer">
         <div className="HomeHeader">
           <FontAwesomeIcon className = "HomeArrow" icon = {faArrowLeft} size = "2x"/>
           <FontAwesomeIcon className = "HomeSearch" icon = {faSearch} size = "2x"/>
-          <Button >Sign Out</Button>
+          <Button onClick={ () => this.props.handler(false)}>Sign Out</Button>
         </div>
         
         <div className = "HomeUser">
@@ -120,6 +130,7 @@ function homepage(){
     </React.Fragment>
   );
 }
+}
   
 
-export default homepage;
+export default Home;

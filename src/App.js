@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./pages/login/Login.component";
 import Register from "./pages/register/Register.component";
 import Home from "./pages/homepage/home";
+import Cookies from 'universal-cookie';
 
 class App extends Component {
   constructor(props) {
@@ -11,17 +12,24 @@ class App extends Component {
     this.state = {
       isLoggedIn: "",
     };
+
+    this.cookies = new Cookies();
   }
 
   handleLoggedIn = (answer) => {
+    console.log("change", answer)
     this.setState({
       isLoggedIn: answer
+    },()=>{
+     this.cookies.set('IsLoggedIn', this.state.isLoggedIn);
     });
   }
 
   componentDidMount(){
+    let IsLoggedIn = this.cookies.get('IsLoggedIn');
+    console.log(IsLoggedIn)
     this.setState({
-      isLoggedIn: false
+      isLoggedIn: IsLoggedIn
     });
   }
 
