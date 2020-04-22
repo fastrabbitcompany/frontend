@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" render={() => this.state.isLoggedIn == "true"? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>
+        <Route exact path="/" render={() => this.state.isLoggedIn === "true"? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>
         <Route exact path="/register" render={() => <Register handler={this.handleLoggedIn}/>} />
       </Switch>
     );

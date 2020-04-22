@@ -43,15 +43,23 @@ class Login extends Component {
     e.preventDefault();
     let user = this.state.userName;
     let pass = this.state.password;
-    console.log(user, pass)
-    let answer = "true";
+    let body = {
+      email:user,
+      password:pass,
+    }
+    let headers = {
+      "content-type": "application/json",
+    }
+    console.log(body)
+    
 
-    setTimeout(()=>{
-      this.props.handler(answer);
-      this.setState({
-        showSpinner:false
-      });
-    }, 3000);
+    fetch("https://fast-rabbit.herokuapp.com/api/auth/login",{method:"post",body:JSON.stringify(body),headers:headers})
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      
+    });
     
   }
 
