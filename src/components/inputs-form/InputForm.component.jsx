@@ -16,6 +16,7 @@ const InputForm = (props) => (
         type={props.type}
         placeholder={props.placeholder}
         aria-describedby="inputGroupPrepend"
+        onChange = {props.handler}
         required
       />
     </InputGroup>
