@@ -13,23 +13,27 @@ class App extends Component {
       isLoggedIn: "",
     };
 
-    this.cookies = new Cookies();
   }
 
   handleLoggedIn = (answer) => {
     console.log("change", answer)
     this.setState({
       isLoggedIn: answer
-    },()=>{
-     this.cookies.set('IsLoggedIn', this.state.isLoggedIn);
+    }, () => {
+      if(answer == "false"){
+        localStorage.removeItem("token");
+        console.log("removed token");
+      }
     });
   }
 
   componentDidMount(){
-    let Logged = this.cookies.get('IsLoggedIn');
-    console.log(Logged)
+    let logged = "false";
+    if(localStorage.getItem("token")){
+      logged = "true";
+    }
     this.setState({
-      isLoggedIn: Logged
+      isLoggedIn: logged
     });
   }
 
