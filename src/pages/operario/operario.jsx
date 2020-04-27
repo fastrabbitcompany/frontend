@@ -16,6 +16,13 @@ class Operario extends React.Component{
         this.setState({toggle:!this.state.toggle});
     }
 
+    handleSelect = (key) => {
+        if(key === "signOut"){
+            this.props.handler("false");
+            this.props.history.push("/")
+        }
+    }
+
 
     render() {
 
@@ -24,25 +31,25 @@ class Operario extends React.Component{
 
         return(
             <div>
-                <SideBar handlerToggle={this.handleToggle} handler={this.props.handler} data={[
+                <SideBar handlerToggle={this.handleToggle} handler={this.handleSelect} data={[
                     {
-                        name:"Registrar",
-                        id:"registar",
+                        name:"Cambiar estado Paquetes",
+                        id:"reg",
                         icon: faBox
                     },
                     {
                         name:"Historial",
-                        id:"historial",
+                        id:"hist",
                         icon:faHistory
                     },
                     {
                         name:"Sign Out",
-                        id:"sign out",
+                        id:"signOut",
                         icon:faSignOutAlt,
                     }
                 ]} />
                 <div className={name}>
-                    <h1>Hello</h1>
+                    <h1>Operario</h1>
                 </div>
 
             </div>
