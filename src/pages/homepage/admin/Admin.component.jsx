@@ -1,0 +1,68 @@
+import React from 'react';
+import { Button, Container, Row, Col, Image, Card } from "react-bootstrap";
+import './admin.styles.css';
+
+class admin extends React.Component{
+render(){
+return(
+<div className="ScreenAdmin">
+    <Container>
+        <Row>
+            <Col className="TitleDelivery" fluid="lg" xs ={11}>
+            Management deliverys men Dashboard
+            </Col>
+        </Row>
+        <Row className = "row justify-content-center">
+            <Col className = "Izq" lg={2}>
+            <Button className="ButtDelivery" onClick={()=> this.props.history.push("/register")} size="md" >
+                Create transportator
+            </Button>
+
+            <Button className="ButtDelivery" onClick={()=> this.props.history.push("/login")} size="md">
+                Search transportator
+            </Button>
+            </Col>
+            <Col lg={2}>
+            <Button className="ButtDelivery" onClick={()=> this.props.history.push("/register")} size="md">
+                Update transportator
+            </Button>
+
+            <Button className="ButtDelivery" onClick={()=> this.props.history.push("/register")} size="md">
+                Delete transportator
+            </Button>
+            </Col>
+        </Row>
+        <Row>
+            <Col className="TitleOperator" fluid="lg" xs ={11} >
+            Management operators Dashboard
+            </Col>
+        </Row>
+        <Row className = "row justify-content-center">
+            <Col className = "Izq" lg={2} >
+            <Button className="ButtOperator" onClick={()=> this.props.history.push("/register")} size="md">
+                Create Operator
+            </Button>
+
+            <Button className="ButtOperator" onClick={()=> this.props.history.push("/register")} size="md">
+                Search Operator
+            </Button>
+            </Col>
+            <Col lg={2} >
+            <Button className="ButtOperator" onClick={()=> this.props.history.push("/register")} size="md">
+                Update Operator
+            </Button>
+
+            <Button className="ButtOperator" onClick={()=> this.props.history.push("/register")} size="md">
+                Delete Operator
+            </Button>
+            </Col>
+        </Row>
+    </Container>
+
+</div>
+
+);
+}
+}
+
+export default admin;

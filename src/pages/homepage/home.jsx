@@ -1,124 +1,178 @@
-import React from 'react';
-import css from './home.style.css';
-import Logo from '../../assets/rabbitNL.png';
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-import {faCalendarAlt} from "@fortawesome/free-solid-svg-icons";
-import {faQuestionCircle} from "@fortawesome/free-solid-svg-icons";
-import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
-import {faStar} from "@fortawesome/free-solid-svg-icons";
-import {faSearch} from "@fortawesome/free-solid-svg-icons";
-import {faHistory} from "@fortawesome/free-solid-svg-icons";
-import {faCog} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import box from "../../assets/box.png"
-import recargar from "../../assets/recargar.png"
-import circle from "../../assets/circle.png"
-import cuadros from "../../assets/cuadros.png"
-import { Button, Container, Row, Col, Form, Image, Card } from "react-bootstrap";
+import chainedFunction from 'chained-function';
+import cx from 'classnames';
+import PropTypes from 'prop-types';
+import React, { PureComponent, cloneElement } from 'react';
+import { uncontrollable } from 'uncontrollable';
+import warning from 'warning';
+import Toggle from './Toggle';
+import Nav from './Nav';
+import NavItem from './NavItem';
+import NavIcon from './NavIcon';
+import NavText from './NavText';
+import styles from './index.styl';
+import match from './match-component';
 
-function homepage(){
-  return(
+class SideNav extends PureComponent {
+    static propTypes = {
+        componentType: PropTypes.any,
 
-  <React.Fragment>
-      <div className="Homecontainer">
-        <div className="HomeHeader">
-          <FontAwesomeIcon className = "HomeArrow" icon = {faArrowLeft} size = "2x"/>
-          <FontAwesomeIcon className = "HomeSearch" icon = {faSearch} size = "2x"/>
-        </div>
-        
-        <div className = "HomeUser">
-          <FontAwesomeIcon className = "HomeHelp" icon = {faQuestionCircle} size = "2x"/>
-          <FontAwesomeIcon className = "HomeUser" icon = {faUserCircle} size = "2x"/>
-        </div>
+        // A custom element for this component.
+        componentClass: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.func
+        ]),
 
-        <div className="HomeSideBar">
-          <img className = "HomeLogo" src = {Logo} alt="Logo" />
-          <li>
-            <FontAwesomeIcon className = "HomeCalendar" icon = {faCalendarAlt}  size = "2x"/>
-          </li>
-          <li>
-            <FontAwesomeIcon className = "HomeHistory" icon = {faHistory} size = "2x"/>
-          </li>          
-        </div>
-        <div className = "HomeSettings" >
-          <FontAwesomeIcon className = "HomeSetting" icon = {faCog} size = "2x"/>
-        </div>
+        // Whether the navigation toggle is disabled.
+        disabled: PropTypes.bool,
 
-        <div className="HomeMain">
-          <div className = "HomeTitleMain">
-            Current Deliveries  
-          </div> 
+        // Whether the side navigation is expanded or collapsed.
+        expanded: PropTypes.bool,
 
-          <div className="HomeListDelivery">
-            <div className = "HomeDeliveryTitle">
-              <ul>User </ul>
-              <ul>Origin</ul>
-              <ul>Destination</ul>
-              <ul>Vehicle</ul>
-              <ul>Premium</ul>
-            </div>
-            <div className = "HomeDelivery">
-              <ul>User1 </ul>
-              <ul>Origin1</ul>
-              <ul>Destination1</ul>
-              <ul>Vehicle1</ul>
-              <ul><FontAwesomeIcon className = "HomeStar" icon = {faStar} /></ul>
-            </div>
+        // Callback fired when toggling the side navigation between expanded and collapsed state.
+        onToggle: PropTypes.func,
 
-            <div className = "HomeDelivery">
-              <ul>User2 </ul>
-              <ul>Origin2</ul>
-              <ul>Destination2</ul>
-              <ul>Vehicle2</ul>
-              <ul>No</ul>
-            </div>  
+        // Callback fired when a navigation item is selected.
+        onSelect: PropTypes.func
+    };
+    static defaultProps = {
+        componentClass: 'nav'
+    };
 
-            <div className = "HomeDelivery">
-              <ul>User3 </ul>
-              <ul>Origin3</ul>
-              <ul>Destination3</ul>
-              <ul>Vehicle1</ul>
-              <ul><FontAwesomeIcon className = "HomeStar" icon = {faStar} /></ul>
-            </div>
-          </div> 
+    isToggle = match(Toggle);
+    isNav = match(Nav);
 
-        </div>
-      </div>  
-	<div className="homepageMovil">
-		<Container className="createShipping">
-			<Row className="createRow">
-				<Col xs="6" className="boxContainer">
-					<Image  className ="box" src={box} />
-				</Col>	
-				
-				<Col xs="6" className="createText">
-					<p className="textBanner"> Crear un nuevo envio</p>
-				</Col>
-			</Row>	
-			<Row>
-				<Col>
-					<p className="textPastShippings"> Envios Anteriores</p>
-				</Col>
-			</Row>
-			<Row className="pastShippings">
+    child = {
+        toggle: null,
+        nav: null
+    };
 
-			</Row>
-			<Row className="bottomMenu">
-				<Col>
-					<Button variant="none"> <Image src={recargar}/> </Button>			
-				</Col>
-				<Col>
-					<Button variant="none"> <Image src={circle}/> </Button>			
-				</Col>
-				<Col>
-					<Button variant="none"> <Image src={cuadros}/> </Button>			
-				</Col>
-			</Row>
-		</Container>   
-	</div>
-    </React.Fragment>
-  );
+    handleClick = (event) => {
+        if (this.props.disabled) {
+            return;
+        }
+
+        this.toggleExpanded('click');
+    };
+
+    toggleExpanded(eventType) {
+        const expanded = !this.props.expanded;
+
+        if (this.props.onToggle) {
+            this.props.onToggle(expanded);
+        }
+    }
+    renderToggle(child, props) {
+        let ref = c => {
+            this.child.toggle = c;
+        };
+
+        if (typeof child.ref === 'string') {
+            warning(
+                false,
+                'String refs are not supported on `<SideNav.Toggle>` component. ' +
+                'To apply a ref to the component use the callback signature:\n\n ' +
+                'https://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute'
+            );
+        } else {
+            ref = chainedFunction(child.ref, ref);
+        }
+
+        return cloneElement(child, {
+            ...props,
+            ref,
+            onClick: chainedFunction(
+                child.props.onClick,
+                this.handleClick
+            )
+        });
+    }
+    renderNav(child, { onSelect, ...props }) {
+        let ref = c => {
+            this.child.nav = c;
+        };
+
+        if (typeof child.ref === 'string') {
+            warning(
+                false,
+                'String refs are not supported on `<SideNav.Nav>` component. ' +
+                'To apply a ref to the component use the callback signature:\n\n ' +
+                'https://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute'
+            );
+        } else {
+            ref = chainedFunction(child.ref, ref);
+        }
+
+        return cloneElement(child, {
+            ...props,
+            ref,
+            onSelect: chainedFunction(
+                child.props.onSelect,
+                onSelect
+            )
+        });
+    }
+    render() {
+        const {
+            componentType, // eslint-disable-line
+            componentClass: Component,
+            disabled,
+            expanded,
+            onToggle, // eslint-disable-line
+            onSelect,
+            className,
+            children,
+            ...props
+        } = this.props;
+
+        return (
+            <Component
+                {...props}
+                className={cx(
+                    className,
+                    styles.sidenav,
+                    {
+                        [styles.disabled]: disabled,
+                        [styles.expanded]: expanded,
+                        [styles.collapsed]: !expanded
+                    }
+                )}
+            >
+                {React.Children.map(children, child => {
+                    if (!React.isValidElement(child)) {
+                        return child;
+                    }
+
+                    if (this.isToggle(child)) {
+                        return this.renderToggle(child, {
+                            disabled, expanded
+                        });
+                    }
+
+                    if (this.isNav(child)) {
+                        return this.renderNav(child, {
+                            onSelect, expanded
+                        });
+                    }
+
+                    return child;
+                })}
+            </Component>
+        );
+    }
 }
-  
 
-export default homepage;
+// For component matching
+SideNav.defaultProps.componentType = SideNav;
+
+const UncontrollableSideNav = uncontrollable(SideNav, {
+    // Define the pairs of prop/handlers you want to be uncontrollable
+    expanded: 'onToggle'
+});
+
+UncontrollableSideNav.Toggle = Toggle;
+UncontrollableSideNav.Nav = Nav;
+UncontrollableSideNav.NavItem = NavItem;
+UncontrollableSideNav.NavIcon = NavIcon;
+UncontrollableSideNav.NavText = NavText;
+
+export default UncontrollableSideNav;
