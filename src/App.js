@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./pages/login/Login.component";
 import Register from "./pages/register/Register.component";
 import Home from "./pages/homepage/home";
-import Cookies from 'universal-cookie';
+import Operario from "./pages/operario/operario";
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class App extends Component {
     this.setState({
       isLoggedIn: answer
     }, () => {
-      if(answer == "false"){
+      if(answer === "false"){
         localStorage.removeItem("token");
         console.log("removed token");
       }
@@ -42,6 +42,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" render={() => this.state.isLoggedIn === "true"? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>
         <Route exact path="/register" render={() => <Register handler={this.handleLoggedIn}/>} />
+        <Route exact path="/operario" render={() => <Operario handler={this.handleLoggedIn}/>} />
       </Switch>
     );
   }
