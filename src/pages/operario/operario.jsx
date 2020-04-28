@@ -51,7 +51,6 @@ class Operario extends React.Component{
                 <div className={name}>
                     <h1>Operario</h1>
                 </div>
-
             </div>
         );
     }
