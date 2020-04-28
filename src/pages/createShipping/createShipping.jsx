@@ -28,17 +28,17 @@ function createShipping(){
 				<Card.Body>
 					<Card.Title className="title-createShipping tituloTexto">Tipo de transporte:</Card.Title>
 					<Row >
-						<Col xs="sm-4" className="text-center colBot">
+						<Col  className="text-center colBot">
 							<button className="botonIcono">
 		          	<Image className="img-responsive imagenTransporte" src={truck}/>          
 							</button>
 						</Col>
-						<Col xs="sm-4" className="text-center colBot">
+						<Col  className="text-center colBot">
 							<button className="botonIcono">
 		          	<Image className="imagenTransporte" src={ship}/>          
 							</button>
 						</Col>
-						<Col xs="sm-4" className="text-center colBot">
+						<Col className="text-center colBot">
 							<button className="botonIcono">
 		          	<Image className="imagenTransporte" src={plane}/>          
 							</button>
