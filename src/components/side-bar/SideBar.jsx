@@ -74,7 +74,6 @@ class SideBar extends React.Component {
                     <Separator />
 
                 </NavItem>
-
             );
         });
         return (
