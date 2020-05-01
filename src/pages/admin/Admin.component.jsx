@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container, Row, Col, Image, Card } from "react-bootstrap";
+import UserList from "../../components/UserList.component";
 import './admin.styles.css';
 
 class admin extends React.Component{
@@ -57,6 +58,11 @@ return(
             </Button>
             </Col>
         </Row>
+        <div>
+            <UserList>
+
+            </UserList>
+        </div>
     </Container>
 
 </div>

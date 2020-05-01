@@ -30,21 +30,24 @@
 .ButtDelivery{
     margin-bottom: 5px;
     margin-top: 5px;
+    height: 70px;
+    width: 110%;
 }
 
 .ButtOperator{
     margin-bottom: 5px;
     margin-top: 5px;
-}
-
-Button{
     height: 70px;
     width: 110%;
 }
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    Button {
+    .ButtDelivery {
+      height: 50%;
+      width: 100%;
+    }
+    .ButtOperator {
       height: 50%;
       width: 100%;
     }
