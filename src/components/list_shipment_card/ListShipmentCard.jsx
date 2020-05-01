@@ -29,7 +29,7 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
     return (
         <Card style={{backgroundColor: isGrey ? "#F8F8F8" : "#FFF"}}>
             <Card.Body>
-                <Container fluid>
+                <Container fluid className={"mt-2"}>
                     <Row>
                         <Col md={8} xs={8}>
                             <h6 style={{fontSize: "14px"}}>{tipo + "#" + id}</h6>
@@ -42,6 +42,7 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
                         </Col>
                     </Row>
                 </Container>
+
                 <Button className={"reg mt-2"} variant="none" onClick={() => setOpen(!open)} aria-controls={id_colapse}
                         aria-expanded={open}>{consultar}</Button>
                 <Collapse in={open} className={"mt-2"}>

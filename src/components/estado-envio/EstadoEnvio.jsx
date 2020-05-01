@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckCircle, faComments, faSpinner} from "@fortawesome/free-solid-svg-icons";
 import GoogleMap from "../map/GoogleMap";
-import {Button, Spinner} from "react-bootstrap";
+import {Button, Card, Spinner} from "react-bootstrap";
 
 const EstadoEnvio = ({progress}) => {
     const listaEstados = progress.map((item,i) => {
@@ -25,6 +25,13 @@ const EstadoEnvio = ({progress}) => {
     });
     return (
         <div>
+            <GoogleMap
+                googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDbAz1XXxDoKSU2nZXec89rcHPxgkvVoiw"}
+                containerElement={<div style={{height: "250px"}}/>}
+                mapElement={<div style={{height: "100%"}}/>}
+                loadingElement={<p>Cargando</p>}
+            />
+            <hr className={"mt-2"}/>
             {listaEstados}
             <div style={{textAlign: "center"}}>
                 <Button className={"btn-atencionCliente mt-2 mb-2"} variant="none">
@@ -32,12 +39,6 @@ const EstadoEnvio = ({progress}) => {
                     <FontAwesomeIcon icon={faComments} className={"ml-2"}/>
                 </Button>
             </div>
-            <GoogleMap
-                googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDbAz1XXxDoKSU2nZXec89rcHPxgkvVoiw"}
-                containerElement={<div style={{height: "400px"}}/>}
-                mapElement={<div style={{height: "100%"}}/>}
-                loadingElement={<p>Cargando</p>}
-            />
         </div>
     )
 
