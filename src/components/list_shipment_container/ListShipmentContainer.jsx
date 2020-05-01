@@ -19,6 +19,31 @@ const ListShipmentContainer = (props) => {
             tipo:"MARITIMO",
             fecha:"29/06/2015",
         },
+        {
+            destino: "Villavicencio",
+            tipo:"MARITIMO",
+            fecha:"29/06/2015",
+        },
+        {
+            destino: "Villavicencio",
+            tipo:"MARITIMO",
+            fecha:"29/06/2015",
+        },
+        {
+            destino: "Villavicencio",
+            tipo:"MARITIMO",
+            fecha:"29/06/2015",
+        },
+        {
+            destino: "Villavicencio",
+            tipo:"MARITIMO",
+            fecha:"29/06/2015",
+        },
+        {
+            destino: "Villavicencio",
+            tipo:"MARITIMO",
+            fecha:"29/06/2015",
+        },
 
     ];
     const items = data.map((shipment,i) => {
