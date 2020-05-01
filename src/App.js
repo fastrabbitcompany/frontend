@@ -5,6 +5,7 @@ import Login from "./pages/login/Login.component";
 import Register from "./pages/register/Register.component";
 import Home from "./pages/homepage/home";
 import Operario from "./pages/operario/operario";
+import ShipmentHistory from "./pages/ShipmentHistory/ShipmentHistory";
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends Component {
         <Route exact path="/" render={() => this.state.isLoggedIn === "true"? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>
         <Route exact path="/register" render={() => <Register handler={this.handleLoggedIn}/>} />
         <Route exact path="/operario" render={() => <Operario handler={this.handleLoggedIn}/>} />
+        <Route exact path="/ship" render={() => <ShipmentHistory handler={this.handleLoggedIn}/>} />
       </Switch>
     );
   }

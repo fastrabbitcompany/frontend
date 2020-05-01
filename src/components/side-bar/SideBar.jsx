@@ -74,7 +74,6 @@ class SideBar extends React.Component {
                     <Separator />
 
                 </NavItem>
-
             );
         });
         return (
@@ -86,7 +85,6 @@ class SideBar extends React.Component {
                 }}
                 onToggle={() => {
                     this.setState({ expanded: !expanded });
-                    this.props.handlerToggle();
                 }}
 
             >
