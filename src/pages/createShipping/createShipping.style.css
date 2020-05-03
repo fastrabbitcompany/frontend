@@ -10,10 +10,11 @@
 
 .rowBox{
 	width:100%;	
-
+	margin:auto;
 }
 .box{
 	height:100%;
+	margin-left:auto;
 }
 .cardTotal{
 	max-width:90vw;

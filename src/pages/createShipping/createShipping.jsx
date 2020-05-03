@@ -30,9 +30,10 @@ function createShipping(){
 	}	
   return(
 
+
 		<Container className="all" >
 			<Row className="logo ">
-				<Col className="rowBox">
+				<Col className="text-center rowBox">
 					<Image className="box" src={Logo}/>
 				</Col>
 			</Row>
