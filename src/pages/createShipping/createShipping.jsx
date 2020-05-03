@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './createShipping.style.css';
+import Logo from '../../assets/box.png';
 import truck from '../../assets/truck.svg';
 import ship from '../../assets/ship.png';
 import plane from '../../assets/plane.webp';
@@ -16,30 +17,42 @@ import box from "../../assets/box.png"
 import recargar from "../../assets/recargar.png"
 import circle from "../../assets/circle.png"
 import cuadros from "../../assets/cuadros.png"
-import { Button, Container, Row, Col, Form, Image, Card } from "react-bootstrap";
+import { Script, Button, Container, Row, Col, Form, Image, Card } from "react-bootstrap";
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import "./createShipping.style.css"
 function createShipping(){
-		
+	function	multiselect(id){
+		document.getElementById("buttonTruck").style.border="3px solid #845ec2";	
+		document.getElementById("buttonShip").style.border="3px solid #845ec2";	
+		document.getElementById("buttonPlane").style.border="3px solid #845ec2";	
+		document.getElementById(id).style.border="5px solid #7d3c98"; 
+	}	
   return(
-		<Container>
+
+		<Container className="all" >
+			<Row className="logo ">
+				<Col className="rowBox">
+					<Image className="box" src={Logo}/>
+				</Col>
+			</Row>
+			<Row className="cardTotal" >
 			<Card className="card-createShipping m-8 shadow-lg cardCrear" style={{borderRadius: "35px"}}>
 				<Card.Body>
 					<Card.Title className="title-createShipping tituloTexto">Tipo de transporte:</Card.Title>
 					<Row >
 						<Col  className="text-center colBot">
-							<button className="botonIcono">
-		          	<Image className="img-responsive imagenTransporte" src={truck}/>          
+							<button className="botonIcono" id="buttonTruck" onClick={()=>multiselect("buttonTruck")} >
+		          	<Image className="imagenTransporte" src={truck}/>          
 							</button>
 						</Col>
 						<Col  className="text-center colBot">
-							<button className="botonIcono">
+							<button className="botonIcono" id="buttonShip" onClick={()=>multiselect("buttonShip")}>
 		          	<Image className="imagenTransporte" src={ship}/>          
 							</button>
 						</Col>
 						<Col className="text-center colBot">
-							<button className="botonIcono">
+							<button className="botonIcono" id="buttonPlane" onClick={()=>multiselect("buttonPlane")}>
 		          	<Image className="imagenTransporte" src={plane}/>          
 							</button>
 						</Col>
@@ -61,6 +74,7 @@ function createShipping(){
 					</Form>
 				</Card.Body>
 			</Card>
+			</Row>
 		</Container>
 );
 }

@@ -1,9 +1,33 @@
+.all{
+	width:100%;
+	
+}
+.logo{
+	margin-top:1vw;
+	min-width:4vw;
+	min-height:20vh;
+}
+
+.rowBox{
+	width:100%;	
+
+}
+.box{
+	height:100%;
+}
+.cardTotal{
+	max-width:90vw;
+	margin:auto;
+}
 .cardCrear{
-	margin-top:10vh;
+	max-width:650px;
+	margin-left:auto;
+	margin:auto;
+	margin-top:2vh;
 }
 .tituloTexto{
 	color:#845ec2;
-	font-size: 3vh;
+	font-size: 4vh;
 	font-weight: 700;
 }
 .imagenTransporte{
