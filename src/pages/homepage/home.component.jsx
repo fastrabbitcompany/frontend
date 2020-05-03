@@ -17,7 +17,7 @@ import cuadros from "../../assets/cuadros.png"
 
 import {Button, Container, Row, Col, Form, Image, Card} from "react-bootstrap";
 
-class home extends Component {
+class Home extends Component {
     constructor() {
         super();
 
@@ -80,4 +80,4 @@ class home extends Component {
     }
 }
 
-export default home;
+export default Home;
