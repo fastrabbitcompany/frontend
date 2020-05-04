@@ -29,13 +29,6 @@ const NavTitle = styled.div`
     padding: 8px 0;
 `;
 
-// height: 20px + 4px = 24px;
-const NavSubTitle = styled.div`
-    font-size: 1em;
-    line-height: 20px;
-    padding-bottom: 4px;
-`;
-
 const NavInfoPane = styled.div`
     float: left;
     width: 100%;

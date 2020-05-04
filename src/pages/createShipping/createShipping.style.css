@@ -1,38 +1,50 @@
-.all{
-	width:100%;
-	
+
+@media only screen and (min-width: 750px) {
+	.img_box{
+		height: 300px;
+	}
+	.containerShipping{
+		margin-left: 85px;
+		height: 100%;
+		width: 90%;
+	}
+	.icon_create{
+		font-size: 3rem;
+		color: #845ec2;
+	}
+
 }
-.logo{
-	margin-top:1vw;
-	min-width:4vw;
-	min-height:20vh;
+@media only screen and (max-width: 750px) {
+	.img_box{
+		height: 200px;
+	}
+	.icon_create{
+		font-size: 1.2rem;
+		color: #845ec2;
+	}
+	.containerShipping{
+		margin-left: 85px;
+		height: 100%;
+		width: 75%;
+	}
+}
+.button-type{
+	background-color: #ffffff;
+	border:2px solid #845ec2;
+}
+.button-type:focus, .button-type:active {
+	outline:none !important;
+	/*box-shadow: none !important;*/
 }
 
-.rowBox{
-	width:100%;	
-
-}
-.box{
-	height:100%;
-}
-.cardTotal{
-	max-width:90vw;
-	margin:auto;
-}
-.cardCrear{
-	max-width:650px;
-	margin-left:auto;
-	margin:auto;
-	margin-top:2vh;
-}
 .tituloTexto{
 	color:#845ec2;
 	font-size: 4vh;
 	font-weight: 700;
 }
 .imagenTransporte{
-	width:100%;
-	height:100%;
+	width:75%;
+	height: 50%;
 	background: transparent;
 }
 .botonIcono{

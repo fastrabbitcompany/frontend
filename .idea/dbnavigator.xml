@@ -23,16 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="bcf14e27-1564-421c-8f55-d3c19930b7cf">
-        <schema name="information_schema" object-types="view, table" />
-        <schema name="u513517312_fastrabbitdb" object-types="view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="bcf14e27-1564-421c-8f55-d3c19930b7cf">
-      <console name="FastRabbit" type="STANDARD" schema="u513517312_fastrabbitdb" session="Main">select * FROM u513517312_fastrabbitdb.`Accounts`</console>
+      <console name="FastRabbit" type="STANDARD" schema="u513517312_fastrabbitdb" session="Main"><![CDATA[select * FROM u513517312_fastrabbitdb.`Accounts`]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

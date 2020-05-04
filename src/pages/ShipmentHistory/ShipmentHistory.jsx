@@ -2,8 +2,6 @@ import React from "react";
 import ListShipmentContainer from "../../components/list_shipment_container/ListShipmentContainer";
 import {withRouter} from 'react-router-dom';
 import SideBar from "../../components/side-bar/SideBar";
-import {faBox, faHistory, faSignOutAlt, faBell} from "@fortawesome/free-solid-svg-icons";
-import {Button, Container, Row, Col, Form, Image, Card, Spinner} from "react-bootstrap";
 import Sticky from 'react-sticky-el';
 
 class ShipmentHistory extends React.Component {
@@ -283,28 +281,7 @@ class ShipmentHistory extends React.Component {
         return (
             <div>
                 <Sticky>
-                    <SideBar handlerToggle={this.handleToggle} handler={this.handleSelect} data={[
-                        {
-                            name: "Enviar Paquete",
-                            id: "envpq",
-                            icon: faBox
-                        },
-                        {
-                            name: "Historial de envios",
-                            id: "hist",
-                            icon: faHistory
-                        },
-                        {
-                            name: "Centro de Notificaciones",
-                            id: "notf",
-                            icon: faBell
-                        },
-                        {
-                            name: "Sign Out",
-                            id: "signOut",
-                            icon: faSignOutAlt,
-                        }
-                    ]}/>
+                    <SideBar handlerToggle={this.handleToggle} handler={this.handleSelect} data={this.props.sideBarData}/>
                 </Sticky>
                 <div style={{marginLeft: "70px"}}>
                     <ListShipmentContainer data={this.state.data}/>

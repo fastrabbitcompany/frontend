@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckCircle, faComments, faSpinner} from "@fortawesome/free-solid-svg-icons";
 import GoogleMap from "../map/GoogleMap";
-import {Button, Card, Spinner} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 const EstadoEnvio = ({progress}) => {
     const listaEstados = progress.map((item,i) => {

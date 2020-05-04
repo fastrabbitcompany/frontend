@@ -1,16 +1,12 @@
 import React, {useState} from "react";
-import {Button, Container, Row, Col, Form, Image, Card, Spinner, Collapse} from "react-bootstrap";
+import {Button, Container, Row, Col, Card, Collapse} from "react-bootstrap";
 import {
     faPlaneDeparture,
     faTruck,
     faShip,
-    faComments,
-    faCheckCircle,
-    faSpinner
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import "./ListShippmentCard.styles.css"
-import GoogleMap from "../map/GoogleMap";
 import EstadoEnvio from "../estado-envio/EstadoEnvio";
 
 
