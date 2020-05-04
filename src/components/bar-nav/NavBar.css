@@ -1,0 +1,25 @@
+.CreateEmployee{
+    margin-top: 55px;
+}
+
+.ButtonEmployee{
+    margin-top: 1px;
+    text-align: center;
+}
+
+.ButEmployee{
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .CreateEmployee {
+        height: 10%;
+        width: 100%;
+        font-size: x-small;
+    }
+    .ButtonEmployee{
+        margin-left: 10px;
+        font-size: small;
+    }
+
+}
