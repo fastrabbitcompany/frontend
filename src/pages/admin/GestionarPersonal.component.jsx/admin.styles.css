@@ -1,0 +1,54 @@
+.ScreenAdmin{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.TitleDelivery{
+    background-color: #918EE6;
+    border-radius: 15px;
+    margin: 3%;
+    padding: 2%;
+    font-weight: bold;
+    font-size: 180%;
+    text-align: center;
+}
+
+.TitleOperator{
+    background-color: #918EE6;
+    border-radius: 15px;
+    margin-top: 40px;
+    margin-left: 3%;
+    padding: 2%;
+    font-weight: bold;
+    font-size: 180%;
+    text-align: center;
+}
+
+.Izq{
+    margin-bottom: 20px;
+
+}
+.ButtDelivery{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 70px;
+    width: 110%;
+}
+
+.ButtOperator{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 70px;
+    width: 110%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .ButtDelivery {
+      height: 50%;
+      width: 100%;
+    }
+    .ButtOperator {
+      height: 50%;
+      width: 100%;
+    }
+  }

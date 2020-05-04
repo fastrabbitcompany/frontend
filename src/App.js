@@ -3,11 +3,13 @@ import "./App.css";
 import {Route, Switch} from "react-router-dom";
 import Login from "./pages/login/Login.component"
 import Register from "./pages/register/Register.component"
-import Home from "./pages/createShipping/createShipping"
+import Gestionar from "./pages/admin/Gestionar_personal/Gestionar.component"
+import Estadisticas from "./pages/admin/Estadisticas/Estadisticas.component";
+import Home from "./pages/user/createShipping/createShipping"
 import Operario from "./pages/operario/operario";
-import ShipmentHistory from "./pages/ShipmentHistory/ShipmentHistory";
-import {faBell, faBox, faHistory, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
-import Notifications from "./pages/notifications/Notifications.component";
+import ShipmentHistory from "./pages/user/ShipmentHistory/ShipmentHistory";
+import {faBell, faBox, faHistory, faSignOutAlt, faUserClock, faChartLine} from "@fortawesome/free-solid-svg-icons";
+import Notifications from "./pages/user/notifications/Notifications.component";
 import {withRouter} from 'react-router-dom'
 
 class App extends Component {
@@ -17,6 +19,7 @@ class App extends Component {
       isLoggedIn: "",
     };
   }
+  
 
   handleLoggedIn = (answer) => {
     console.log("change", answer)
@@ -55,6 +58,18 @@ class App extends Component {
     }
   }
 
+    HandlerNavAdmin = (key) =>{
+        if(key === "gest"){
+            this.props.history.push("/gestionar");
+        }
+        if(key === "estadis"){
+            this.props.history.push("/estadisticas");
+        }
+        if(key === "signOut"){
+            this.handleLoggedIn("false");
+        }
+    }
+
   render() {
     const sideBarDataUser = [
       {
@@ -78,7 +93,24 @@ class App extends Component {
         icon: faSignOutAlt,
       }
     ]
-    console.log(this.state)
+      const sideBarDataAdmin = [
+          {
+              name: "Gestion de Personal",
+              id: "gest",
+              icon: faUserClock
+          },
+          {
+              name: "Estadisticas",
+              id: "estadis",
+              icon: faChartLine
+          },
+          {
+              name: "Cerrar Sesión",
+              id: "signOut",
+              icon: faSignOutAlt,
+          }
+      ]
+    // console.log(this.state)
     return (
       <Switch>
         <Route exact path="/" render={() => this.state.isLoggedIn === "true"? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>
@@ -87,6 +119,8 @@ class App extends Component {
         <Route exact path="/history" render={() => <ShipmentHistory handler={this.handleLoggedIn} handlerNav={this.HandlerNavUser} sideBarData={sideBarDataUser}/>} />
         <Route exact path="/home" render={() => <Home handler={this.handleLoggedIn} handlerNav={this.HandlerNavUser} sideBarData={sideBarDataUser}/>} />
         <Route exact path="/notifications" render={() => <Notifications handler={this.handleLoggedIn} handlerNav={this.HandlerNavUser} sideBarData={sideBarDataUser}/>} />
+        <Route exact path="/gestionar" render={() => <Gestionar handler={this.handleLoggedIn} handlerNav={this.HandlerNavAdmin} sideBarData={sideBarDataAdmin}/>} />
+        <Route exact path="/estadisticas" render={() => <Estadisticas handler={this.handleLoggedIn} handlerNav={this.HandlerNavAdmin} sideBarData={sideBarDataAdmin}/>} />
       </Switch>
     );
   }

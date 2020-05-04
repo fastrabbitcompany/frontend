@@ -1,0 +1,16 @@
+.SearchBar{
+    margin-left: 50px;
+    height: 10%;
+    width: 100%;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .SearchBar {
+        margin-left: 0px;
+        height: 10%;
+        width: 100%;
+        font-size: x-small;
+
+    }
+}

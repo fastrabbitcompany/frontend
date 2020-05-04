@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../assets/box.png';
+import Logo from '../../../assets/box.png';
 import {faRulerVertical,faRulerHorizontal, faRulerCombined, faArrowLeft, faPlaneDeparture, faShip, faTruck, faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -15,9 +15,9 @@ import {
 } from "react-bootstrap";
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import "./createShipping.style.css"
-import SideBar from "../../components/side-bar/SideBar";
+import SideBar from "../../../components/side-bar/SideBar";
 import Tilt from "react-tilt";
-import InputForm from "../../components/inputs-form/InputForm.component";
+import InputForm from "../../../components/inputs-form/InputForm.component";
 import swal from 'sweetalert';
 import {withRouter} from 'react-router-dom'
 

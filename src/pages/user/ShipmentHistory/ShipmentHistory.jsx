@@ -1,7 +1,7 @@
 import React from "react";
-import ListShipmentContainer from "../../components/list_shipment_container/ListShipmentContainer";
+import ListShipmentContainer from "../../../components/list_shipment_container/ListShipmentContainer";
 import {withRouter} from 'react-router-dom';
-import SideBar from "../../components/side-bar/SideBar";
+import SideBar from "../../../components/side-bar/SideBar";
 import Sticky from 'react-sticky-el';
 
 class ShipmentHistory extends React.Component {
