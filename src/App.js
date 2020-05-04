@@ -110,7 +110,7 @@ class App extends Component {
               icon: faSignOutAlt,
           }
       ]
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <Switch>
         <Route exact path="/" render={() => this.state.isLoggedIn === "true"? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>

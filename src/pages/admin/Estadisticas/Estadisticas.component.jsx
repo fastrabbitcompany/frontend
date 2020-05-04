@@ -1,6 +1,4 @@
 import React from 'react';
-import UserList from "../../../components/user-row/UserList.component";
-import Barra from '../../../components/bar-nav/NavBar.component';
 import SideBar from "../../../components/side-bar/SideBar";
 
 class Estadisticas extends React.Component{

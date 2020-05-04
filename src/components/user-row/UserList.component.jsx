@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, Container, Row, Column }  from "react-bootstrap";
+import { ListGroup, Container}  from "react-bootstrap";
 import RowUser from "./RowUser.component";
 
 const UserList = (props) => {
