@@ -92,21 +92,21 @@ class Login extends Component {
                                     <Image src={Logo} style={{height: "300px"}} fluid/>
                                 </Tilt>
                                 <Form className="mt-3" onSubmit={this.handleSubmit}>
-                                    <InputForm type="email" placeholder="user" icon={faUser}
+                                    <InputForm type="email" placeholder="Email" icon={faUser}
                                                handler={this.handleChangeName}/>
-                                    <InputForm type="password" placeholder="Password" icon={faKey}
+                                    <InputForm type="password" placeholder="Contraseña" icon={faKey}
                                                handler={this.handleChangePass}/>
                                     <Button variant="none" className="prim w-100" type="submit">
                                         {this.state.showSpinner &&
                                         <Spinner ref="spinner" as="span" className="mr-2" animation="grow" size="sm"/>
                                         }
-                                        Log In </Button>
+                                        Iniciar Sesión </Button>
                                     <Button
                                         variant="none"
                                         className="reg w-100 mt-2"
-                                        onClick={() => this.props.history.push("/register")}
+                                        onClick={() => this.props.history.push("/registro")}
                                     >
-                                        Sign Up
+                                        Resgitrarse
                                     </Button>
                                 </Form>
                             </Card>

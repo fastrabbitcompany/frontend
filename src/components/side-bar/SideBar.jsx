@@ -29,13 +29,6 @@ const NavTitle = styled.div`
     padding: 8px 0;
 `;
 
-// height: 20px + 4px = 24px;
-const NavSubTitle = styled.div`
-    font-size: 1em;
-    line-height: 20px;
-    padding-bottom: 4px;
-`;
-
 const NavInfoPane = styled.div`
     float: left;
     width: 100%;
@@ -66,7 +59,7 @@ class SideBar extends React.Component {
             return (
                 <NavItem eventKey={row.id} key={row.id} className={"mt-4"}>
                     <NavIcon>
-                        <FontAwesomeIcon icon={row.icon} style={{fontSize: "1.5em"}}/>
+                        <FontAwesomeIcon icon={row.icon} style={{fontSize: "1.5em",transform: row.id === "signOut" ? "rotate(180deg)":""}}/>
                     </NavIcon>
                     <NavText style={{color: "#000"}}>
                         {row.name}
