@@ -1,0 +1,32 @@
+@media only screen and (min-width: 600px){
+    .icon_shippment{
+        color:rgba(214,93,177,0.7);
+        font-size: 3em;
+        margin-right: 100px;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .icon_shippment{
+        color:rgba(214,93,177,0.7);
+        font-size: 2em;
+        margin-right: 100px;
+        padding: 0;
+    }
+}
+
+.btn-atencionCliente{
+    background-color: rgba(255,150,113)
+;
+    border-radius: 30px;
+    color: #fff;
+}
+
+.btn-atencionCliente:hover{
+    background-color: rgba(255,150,113,0.8)
+;
+    border-radius: 30px;
+    color: #fff;
+}
+
