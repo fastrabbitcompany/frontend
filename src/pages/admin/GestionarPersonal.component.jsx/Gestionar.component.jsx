@@ -1,9 +1,10 @@
 import React from 'react';
-import UserList from "../../components/user-row/UserList.component";
-import Barra from '../../components/bar-nav/NavBar.component';
+import UserList from "../../../components/user-row/UserList.component";
+import Barra from '../../../components/bar-nav/NavBar.component';
 import './admin.styles.css';
+import SideBar from "../../../components/side-bar/SideBar";
 
-class admin extends React.Component{
+class Gestionar extends React.Component{
     constructor (props) {
         super(props);
         this.state = {
@@ -47,13 +48,17 @@ class admin extends React.Component{
     
     render(){
     return(
-    <div className="ScreenAdmin"> 
-        <Barra />
-        <UserList data = {this.state.data}/>
+    <div className="ScreenAdmin">
+        <SideBar handler={this.props.handlerNav} data={this.props.sideBarData}/>
+        <div className={"mt-4"} style={{marginLeft:"70px"}}>
+            <Barra/>
+            <UserList data = {this.state.data}/>
+        </div>
+
     </div>
 
     );
     }
     }
 
-export default admin;
+export default Gestionar;

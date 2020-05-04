@@ -1,6 +1,6 @@
 import React from "react";
 import {withRouter} from 'react-router-dom'
-import SideBar from "../../components/side-bar/SideBar";
+import SideBar from "../../../components/side-bar/SideBar";
 
 class Notifications extends React.Component{
     constructor() {
