@@ -5,7 +5,7 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import styled from 'styled-components';
 import {Image} from "react-bootstrap";
 import Logo from "../../assets/rabbitNL.png";
-import BackgroundUser from "../../assets/s1.jpg";
+import BackgroundUser from "../../assets/handle_care.jpg";
 import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 
 
@@ -91,8 +91,8 @@ class SideBar extends React.Component {
 
                     <NavInfoPane style={{backgroundImage:`url(${BackgroundUser})`,backgroundPosition:"center left"}}>
                         <FontAwesomeIcon icon={faUserCircle} style={{fontSize: "3em", marginTop:"15px"}}/>
-                        <p className={"mt-3"} style={{fontWeight:"bold"}}> Juan Camilo Gomez </p>
-                        <p style={{marginTop:"-15px"}}> jcgomezlo@unal.edu.co </p>
+                        <p className={"mt-3"} style={{fontWeight:"bold"}}> {localStorage.getItem("username")} </p>
+                        <p style={{marginTop:"-15px"}}> {localStorage.getItem("email")} </p>
                     </NavInfoPane>
                 </NavHeader>
                 <Nav defaultSelected="home">
