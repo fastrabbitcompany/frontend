@@ -60,7 +60,25 @@ class Home extends React.Component {
             },
 
         ]
-        this.setState({data_select: data_select});
+        fetch("https://fastrabbitback.herokuapp.com/api/city/getall", {
+            method: "POST",
+            body: JSON.stringify({token:localStorage.getItem("token")}),
+            headers: {
+                "content-type": "application/json",
+            }
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then( (response) => {
+                console.log(response);
+                if(response.success){
+                    this.setState({data_select: response.cities});
+                }
+            });
+
+
+
 
     }
 
@@ -195,8 +213,8 @@ class Home extends React.Component {
                                             <Form.Label style={{fontSize: "20px"}}>Origen</Form.Label>
                                             <Form.Control size="sm" as="select"
                                                           onChange={(e) => this.setState({origen: e.target.value})}>
-                                                {this.state.data_select.map(item => (
-                                                        <option key={item.id} value={item.id}>{item.name}</option>
+                                                {this.state.data_select.map(city => (
+                                                        <option key={city.cityId} value={city.cityId}>{city.cityName}</option>
                                                     )
                                                 )}
                                             </Form.Control>
@@ -205,8 +223,8 @@ class Home extends React.Component {
                                             <Form.Label style={{fontSize: "20px"}}>Destino</Form.Label>
                                             <Form.Control size="sm" as="select"
                                                           onChange={(e) => this.setState({destino: e.target.value})}>
-                                                {this.state.data_select.map(item => (
-                                                        <option key={item.id} value={item.id}>{item.name}</option>
+                                                {this.state.data_select.map(city => (
+                                                        <option key={city.cityId} value={city.cityId}>{city.cityName}</option>
                                                     )
                                                 )}
                                             </Form.Control>

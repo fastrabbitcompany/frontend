@@ -8,12 +8,12 @@ class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            first_name: 0,
-            last_name: 0,
-            address: 0,
-            phone: 0,
-            email: 0,
-            password: 0,
+            first_name: "",
+            last_name: "",
+            address: "",
+            phone: "",
+            email: "",
+            password: "",
         }
     }
 
@@ -22,9 +22,9 @@ class Register extends React.Component {
         const {first_name,last_name,address,phone,email,password } = this.state;
         console.log(this.state)
         if( first_name && last_name && address && phone && email){
-            if( password.length>=5) {
-                alert("yes")
+            if( password.length>5) {
                 let body = {
+                    username:email.split("@")[0],
                     email: email,
                     password: password,
                     phoneNumber: phone,
@@ -35,7 +35,34 @@ class Register extends React.Component {
                 let headers = {
                     "content-type": "application/json",
                 }
-                body = JSON.stringify(body);
+
+                console.log(body)
+
+                fetch("https://fastrabbitback.herokuapp.com/api/auth/sign-up", {
+                    method: "post",
+                    body: JSON.stringify(body),
+                    headers: headers
+                })
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then( (response) => {
+                        console.log(response);
+                        if(response.success){
+                            this.setState({
+                                first_name: "",
+                                last_name: "",
+                                address: "",
+                                phone: "",
+                                email: "",
+                                password: "",
+                            });
+                            swal("Usuario Registrado","", "success");
+                        } else {
+                            swal("Error al registra", response.message, "error");
+                        }
+                    });
+
             } else {
                 swal("Contraseña Invalida", "La contraseña debe contener almenos 5 caracteres", "error");
             }
@@ -56,14 +83,18 @@ class Register extends React.Component {
                                     <Form.Group style={{textAlign: "left"}}>
                                         <Form.Label className="label-register">Nombres</Form.Label>
                                         <Form.Control type="text" placeholder="Jhon" required
-                                                      onChange={(e) => this.setState({first_name: e.target.value})}/>
+                                                      onChange={(e) => this.setState({first_name: e.target.value})}
+                                                      value={this.state.first_name}
+                                        />
                                     </Form.Group>
                                 </Col>
                                 <Col>
                                     <Form.Group style={{textAlign: "left"}} >
                                         <Form.Label className="label-register">Apellidos</Form.Label>
                                         <Form.Control type="text" placeholder="Doe" required
-                                                      onChange={(e) => this.setState({last_name: e.target.value})}/>
+                                                      onChange={(e) => this.setState({last_name: e.target.value})}
+                                                      value={this.state.last_name}
+                                        />
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -73,28 +104,36 @@ class Register extends React.Component {
                                     <Form.Group style={{textAlign: "left"}} >
                                         <Form.Label className="label-register">Dirección</Form.Label>
                                         <Form.Control type="text" placeholder="Cll 26a No. 24a-18" required
-                                                      onChange={(e) => this.setState({address: e.target.value})}/>
+                                                      onChange={(e) => this.setState({address: e.target.value})}
+                                                      value={this.state.address}
+                                        />
                                     </Form.Group>
                                 </Col>
                                 <Col md={4} lg={4}>
                                     <Form.Group style={{textAlign: "left"}} >
                                         <Form.Label className="label-register">Número de Celular</Form.Label>
                                         <Form.Control type="number" placeholder="3104787326" required
-                                                      onChange={(e) => this.setState({phone: e.target.value})}/>
+                                                      onChange={(e) => this.setState({phone: e.target.value})}
+                                                      value={this.state.phone}
+                                        />
                                     </Form.Group>
                                 </Col>
                             </Row>
                             <Form.Group style={{textAlign: "left"}}>
                                 <Form.Label className="label-register">Email</Form.Label>
                                 <Form.Control type="email" placeholder="example@gmail.com" required
-                                              onChange={(e) => this.setState({email: e.target.value})}/>
+                                              onChange={(e) => this.setState({email: e.target.value})}
+                                              value={this.state.email}
+                                />
                             </Form.Group>
 
 
                             <Form.Group style={{textAlign: "left"}}>
                                 <Form.Label className="label-register">Contraseña</Form.Label>
                                 <Form.Control type="password" placeholder="Contraseña" required
-                                              onChange={(e) => this.setState({password: e.target.value})}/>
+                                              onChange={(e) => this.setState({password: e.target.value})}
+                                              value={this.state.password}
+                                />
                             </Form.Group>
 
                             <Button variant="none" className="reg w-100" type="submit"> Register </Button>
