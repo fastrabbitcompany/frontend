@@ -1,6 +1,16 @@
 import React from 'react';
 import Logo from '../../../assets/box.png';
-import {faRulerVertical,faRulerHorizontal, faRulerCombined, faArrowLeft, faPlaneDeparture, faShip, faTruck, faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
+import {
+    faRulerVertical,
+    faRulerHorizontal,
+    faRulerCombined,
+    faArrowLeft,
+    faPlaneDeparture,
+    faShip,
+    faTruck,
+    faMapMarkedAlt,
+    faWeightHanging
+} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     Button,
@@ -27,15 +37,19 @@ class Home extends React.Component {
         this.state = {
             type: 0,
             envio: -1,
-            origen: 0,
-            destino: 0,
+            origen: 1,
+            destino: 1,
             ancho: 0,
             alto: 0,
             largo: 0,
+            peso:0,
             data_select: [],
             cotizado:false,
             progress:0,
-            direccion:0
+            direccion:0,
+            costo:0,
+            distancia:0,
+            tiempo:0,
 
         }
     }
@@ -83,21 +97,40 @@ class Home extends React.Component {
     }
 
     cotizar = () =>{
-        console.log(this.state);
-        const {type,envio,origen,destino,ancho,alto,largo } = this.state;
-        if(envio !== -1 && ancho && alto && largo && type){
+        const {type,envio,origen,destino,ancho,alto,largo,peso } = this.state;
+        if(envio !== -1 && ancho && alto && largo && type && peso){
             let body = {
                 type: type,
                 envio: envio,
                 origen:origen,
                 destino:destino,
-                volumen:ancho*alto*largo
+                volumen:ancho*alto*largo,
+                peso:peso,
+                token:localStorage.getItem("token")
             }
             let headers = {
                 "content-type": "application/json",
-                "Authorization" : "123456"
             }
-            body = JSON.stringify(body);
+            console.log(body);
+            fetch("https://fastrabbitback.herokuapp.com/api/connection/quote", {
+                method: "post",
+                body: JSON.stringify(body),
+                headers: headers
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then( (response) => {
+                    if(response.success){
+                        this.setState({
+                            costo:response.price,
+                            distancia:response.distance,
+                            tiempo:response.time,
+                        })
+                    } else {
+                        swal("Un error ha ocurrido", response.message, "error");
+                    }
+                });
            this.setState({progress:50,cotizado:true})
         } else {
             swal("Datos Incorrectos", "Por favor diligencie todos los datos del formulario!", "error");
@@ -106,40 +139,25 @@ class Home extends React.Component {
     }
 
     enviarPedido = () => {
-        const {type,envio,origen,destino,ancho,alto,largo, direccion } = this.state;
-        if(envio !== -1 && ancho && alto && largo && type && direccion){
+        const {type,envio,origen,destino,ancho,alto,largo, direccion, peso } = this.state;
+        if(envio !== -1 && ancho && alto && largo && type && direccion && peso){
             let body = {
                 type: type,
                 envio: envio,
                 origen:origen,
                 destino:destino,
                 volumen:ancho*alto*largo,
-                direccion:direccion
+                direccion:direccion,
+                peso:peso
             }
             let headers = {
                 "content-type": "application/json",
-                "Authorization" : "123456"
             }
             body = JSON.stringify(body);
             swal("Orden Creada !!!", "Por favor lleve su producto a uno de los puntos y proporcione el ID: 1477825", "success");
-            this.setState({progress:100,type:0,envio:-1,ancho:0,largo:0,alto:0,direccion:0})
+            this.setState({progress:100,type:0,envio:-1,ancho:0,largo:0,alto:0,direccion:0,peso:0})
         } else {
             swal("Datos Incorrectos", "Por favor diligencie todos los datos del formulario!", "error");
-        }
-    }
-
-    handleSelect = (key) => {
-        if(key === "envpq"){
-            this.props.history.push("/home");
-        }
-        if(key === "hist"){
-            this.props.history.push("/ship");
-        }
-        if(key === "notf"){
-            this.props.history.push("/notifications");
-        }
-        if(key === "signOut"){
-            this.props.handler("false");
         }
     }
 
@@ -171,15 +189,15 @@ class Home extends React.Component {
                                         <Row className={"mt-4"}>
                                             <Col xs={4} className="text-center colBot">
                                                 <Button variant={"none"} id="buttonTruck" className={"button-type"}
-                                                        style={{"boxShadow": type === 1 ? "0 0 5px #7d3c98" : "none"}}
-                                                        onClick={() => this.setState({type: 1})}>
+                                                        style={{"boxShadow": type === 2 ? "0 0 5px #7d3c98" : "none"}}
+                                                        onClick={() => this.setState({type: 2})}>
                                                     <FontAwesomeIcon icon={faPlaneDeparture} className={"icon_create"}/>
                                                 </Button>
                                             </Col>
                                             <Col xs={4} className="text-center colBot">
                                                 <Button variant={"none"} id="buttonShip" className={"button-type"}
-                                                        style={{"boxShadow": type === 2 ? "0 0 5px #7d3c98" : "none"}}
-                                                        onClick={() => this.setState({type: 2})}>
+                                                        style={{"boxShadow": type === 1 ? "0 0 5px #7d3c98" : "none"}}
+                                                        onClick={() => this.setState({type: 1})}>
                                                     <FontAwesomeIcon icon={faTruck} className={"icon_create"}/>
                                                 </Button>
                                             </Col>
@@ -230,17 +248,23 @@ class Home extends React.Component {
                                             </Form.Control>
                                         </Form.Group>
                                         <Row>
-                                            <Col xs={12} md={4}>
-                                                <InputForm type="number" placeholder="Ancho" icon={faRulerCombined}
+                                            <Col xs={12} md={6}>
+                                                <InputForm type="number" placeholder="Ancho (Cm) " icon={faRulerCombined}
                                                            handler={(e) => this.setState({ancho: e.target.value})}/>
                                             </Col>
-                                            <Col xs={12} md={4}>
-                                                <InputForm type="number" placeholder="Largo" icon={faRulerHorizontal}
+                                            <Col xs={12} md={6}>
+                                                <InputForm type="number" placeholder="Largo (Cm)" icon={faRulerHorizontal}
                                                            handler={(e) => this.setState({alto: e.target.value})}/>
                                             </Col>
-                                            <Col xs={12} md={4}>
-                                                <InputForm type="number" placeholder="Alto" icon={faRulerVertical}
+                                        </Row>
+                                        <Row>
+                                            <Col xs={12} md={6}>
+                                                <InputForm type="number" placeholder="Alto (Cm)" icon={faRulerVertical}
                                                            handler={(e) => this.setState({largo: e.target.value})}/>
+                                            </Col>
+                                            <Col xs={12} md={6}>
+                                                <InputForm type="number" placeholder="Peso" icon={faWeightHanging}
+                                                           handler={(e) => this.setState({peso: e.target.value})}/>
                                             </Col>
                                         </Row>
                                         <Button variant="none" className="reg w-100"
@@ -259,15 +283,15 @@ class Home extends React.Component {
                                             <tbody>
                                             <tr>
                                                 <td>Costo</td>
-                                                <td>$145 000</td>
+                                                <td>${this.state.costo}</td>
                                             </tr>
                                             <tr>
                                                 <td>Distancia</td>
-                                                <td>800 km</td>
+                                                <td>{Math.round(this.state.distancia)}Km</td>
                                             </tr>
                                             <tr>
                                                 <td>Tiempo Estimado</td>
-                                                <td>2.5d dias</td>
+                                                <td>{this.state.tiempo} Dias</td>
                                             </tr>
                                             </tbody>
                                         </Table>
