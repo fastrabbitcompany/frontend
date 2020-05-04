@@ -281,7 +281,7 @@ class ShipmentHistory extends React.Component {
         return (
             <div>
                 <Sticky>
-                    <SideBar handlerToggle={this.handleToggle} handler={this.handleSelect} data={this.props.sideBarData}/>
+                    <SideBar handler={this.props.handlerNav} data={this.props.sideBarData}/>
                 </Sticky>
                 <div style={{marginLeft: "70px"}}>
                     <ListShipmentContainer data={this.state.data}/>

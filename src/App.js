@@ -7,6 +7,8 @@ import Home from "./pages/createShipping/createShipping"
 import Operario from "./pages/operario/operario";
 import ShipmentHistory from "./pages/ShipmentHistory/ShipmentHistory";
 import {faBell, faBox, faHistory, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+import Notifications from "./pages/notifications/Notifications.component";
+import {withRouter} from 'react-router-dom'
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +40,21 @@ class App extends Component {
     });
   }
 
+   HandlerNavUser = (key) =>{
+    if(key === "envpq"){
+      this.props.history.push("/home");
+    }
+    if(key === "hist"){
+      this.props.history.push("/history");
+    }
+    if(key === "notf"){
+      this.props.history.push("/notifications");
+    }
+    if(key === "signOut"){
+      this.handleLoggedIn("false");
+    }
+  }
+
   render() {
     const sideBarDataUser = [
       {
@@ -56,21 +73,23 @@ class App extends Component {
         icon: faBell
       },
       {
-        name: "Sign Out",
+        name: "Cerrar Sesión",
         id: "signOut",
         icon: faSignOutAlt,
       }
     ]
+    console.log(this.state)
     return (
       <Switch>
         <Route exact path="/" render={() => this.state.isLoggedIn === "true"? <Home handler = {this.handleLoggedIn}/>:<Login handler = {this.handleLoggedIn}/> }/>
-        <Route exact path="/register" render={() => <Register handler={this.handleLoggedIn}/>} />
+        <Route exact path="/registro" render={() => <Register handler={this.handleLoggedIn}/>} />
         <Route exact path="/operario" render={() => <Operario handler={this.handleLoggedIn}/>} />
-        <Route exact path="/ship" render={() => <ShipmentHistory handler={this.handleLoggedIn} sideBarData={sideBarDataUser}/>} />
-        <Route exact path="/home" render={() => <Home handler={this.handleLoggedIn} sideBarData={sideBarDataUser}/>} />
+        <Route exact path="/history" render={() => <ShipmentHistory handler={this.handleLoggedIn} handlerNav={this.HandlerNavUser} sideBarData={sideBarDataUser}/>} />
+        <Route exact path="/home" render={() => <Home handler={this.handleLoggedIn} handlerNav={this.HandlerNavUser} sideBarData={sideBarDataUser}/>} />
+        <Route exact path="/notifications" render={() => <Notifications handler={this.handleLoggedIn} handlerNav={this.HandlerNavUser} sideBarData={sideBarDataUser}/>} />
       </Switch>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

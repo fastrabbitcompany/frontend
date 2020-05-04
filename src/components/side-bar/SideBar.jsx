@@ -59,7 +59,7 @@ class SideBar extends React.Component {
             return (
                 <NavItem eventKey={row.id} key={row.id} className={"mt-4"}>
                     <NavIcon>
-                        <FontAwesomeIcon icon={row.icon} style={{fontSize: "1.5em"}}/>
+                        <FontAwesomeIcon icon={row.icon} style={{fontSize: "1.5em",transform: row.id === "signOut" ? "rotate(180deg)":""}}/>
                     </NavIcon>
                     <NavText style={{color: "#000"}}>
                         {row.name}

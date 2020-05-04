@@ -19,6 +19,7 @@ import SideBar from "../../components/side-bar/SideBar";
 import Tilt from "react-tilt";
 import InputForm from "../../components/inputs-form/InputForm.component";
 import swal from 'sweetalert';
+import {withRouter} from 'react-router-dom'
 
 class Home extends React.Component {
     constructor(props) {
@@ -109,17 +110,33 @@ class Home extends React.Component {
         }
     }
 
+    handleSelect = (key) => {
+        if(key === "envpq"){
+            this.props.history.push("/home");
+        }
+        if(key === "hist"){
+            this.props.history.push("/ship");
+        }
+        if(key === "notf"){
+            this.props.history.push("/notifications");
+        }
+        if(key === "signOut"){
+            this.props.handler("false");
+        }
+    }
+
 
     render() {
         const type = this.state.type;
         return (
             <div className={"containerShipping"}>
-                <SideBar handler={this.handleSelect} data={this.props.sideBarData}/>
+                <SideBar handler={this.props.handlerNav} data={this.props.sideBarData}/>
                 <Container className={"w-100 h-100"}>
                     <Row className={"h-100 w-100 justify-content-center"}>
                         <Col md={6} className={"align-self-center d-none d-md-block"}>
                             <Row className={"justify-content-center"}>
-                                <h1 className="display-4 mb-0" style={{fontSize: "50px"}}>Where do you want your Fast
+                                <h1 className="display-4 mb-0" style={{fontSize: "50px"}}>
+                                    Where do you want your Fast
                                     Rabbit to go today?</h1>
                                 <div>
                                     <Tilt className="Tilt mt-4" options={{max: 25}}>
@@ -257,4 +274,4 @@ class Home extends React.Component {
 }
 
 
-export default Home;
+export default withRouter(Home);
