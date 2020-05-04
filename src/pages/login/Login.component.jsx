@@ -53,7 +53,7 @@ class Login extends Component {
         }
         console.log(body)
 
-        fetch("https://fast-rabbit.herokuapp.com/api/auth/login", {
+        fetch("https://fastrabbitback.herokuapp.com/api/auth/login", {
             method: "post",
             body: JSON.stringify(body),
             headers: headers
@@ -68,10 +68,19 @@ class Login extends Component {
                 });
                 if(response.success){
                     localStorage.setItem("token",response.token);
+                    localStorage.setItem("username",response.username);
+                    localStorage.setItem("email",response.email);
+                    const role = response.role;
+                    if(role){
+                        localStorage.setItem("role", role);
+                    } else {
+                        localStorage.setItem("role", "User");
+                        //User, Admin, Operario
+                    }
+                    console.log(localStorage.getItem("role"));
                     this.props.handler("true");
-                    //swal("Login Succesful", response.message, "success");
                 } else {
-                    swal("Error", response.message, "error");
+                    swal("Error", "", "error");
                 }
             });
 
