@@ -1,4 +1,4 @@
-.titlePackage{
+.UpdateTitle{
     text-align: center;
     font-size: large;
     padding: 2%;
@@ -7,7 +7,7 @@
 .idPackage{
     margin-left: 2%;
     margin-right: 20%;
-    margin-bottom: 2%;
+    margin-top: 5%;
 }
 
 .statusPackage{
