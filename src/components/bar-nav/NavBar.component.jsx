@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Container, Col, Row, Button, Modal }  from "react-bootstrap";
 import SearchBar from "./SearchBar.component";
-import UserForm from '../inputs-form/CreateUserForm.component';
+import UserForm from '../admin-control/CreateUserForm.component';
 import './NavBar.css';
 
 const NavBar = () => {

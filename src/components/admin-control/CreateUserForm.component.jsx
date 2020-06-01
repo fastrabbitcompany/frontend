@@ -14,9 +14,6 @@ class UpdateUserForm extends React.Component {
             first_name: "",
             last_name: "",
             address: "",
-            employeeDni:"",
-            employeePin:"",
-            employeeIsActive:"",
             employeeRole:""
         }
     }
@@ -35,9 +32,6 @@ class UpdateUserForm extends React.Component {
                     firstName: first_name,
                     lastName: last_name,
                     address: address,
-                    employeeDni:"",
-                    employeePin:"",
-                    employeeIsActive:"",
                     employeeRole:""
                 }
                 let headers = {
@@ -64,9 +58,6 @@ class UpdateUserForm extends React.Component {
                                 phone: "",
                                 email: "",
                                 password: "",
-                                employeeDni:"",
-                                employeePin:"",
-                                employeeIsActive:"",
                                 employeeRole:""
                             });
                             swal("Usuario Registrado","", "success");
@@ -145,6 +136,17 @@ class UpdateUserForm extends React.Component {
                                               onChange={(e) => this.setState({password: e.target.value})}
                                               value={this.state.password}
                                 />
+                            </Form.Group>
+
+                            <Form.Group style={{textAlign: "left"}}>
+                                <Form.Label className="label-register">Seleccione el rol </Form.Label>
+                                <Form.Control as = "select" required>
+                                    <option>1</option>
+                                    <option>2</option>    
+                                    <option>3</option>
+                                        onChange={(e) => this.setState({employeeRole: e.target.value})}
+                                        value={this.state.employeeRole}
+                                </Form.Control>
                             </Form.Group>
 
                             <Button variant="none" className="reg w-100" type="submit"> Create user </Button>

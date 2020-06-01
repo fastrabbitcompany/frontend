@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import swal from 'sweetalert';
 import { Row, Col, Card, Container, Button, Modal}  from "react-bootstrap";
 import { faUserCircle, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import UserForm from '../inputs-form/UpdateUserForm.component';
+import UserForm from '../admin-control/UpdateUserForm.component';
 import "./RowUser.css";
 
 
