@@ -14,13 +14,10 @@ class UpdateUserForm extends React.Component {
             first_name: "",
             last_name: "",
             address: "",
-            employeeDni:"",
-            employeePin:"",
-            employeeIsActive:"",
             employeeRole:""
         }
     }
-
+    
     handleRegister = (e) => {
         e.preventDefault();
         const {first_name,last_name,address,phone,email,password } = this.state;
@@ -43,7 +40,7 @@ class UpdateUserForm extends React.Component {
 
                 console.log(body)
 
-                fetch("https://fastrabbitback.herokuapp.com/api/admin/Employee", {
+                fetch("https://fastrabbitback.herokuapp.com/api/admin/updatemployee", {
                     method: "put",
                     body: JSON.stringify(body),
                     headers: headers

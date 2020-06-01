@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button, Container, Row, Col, Form, Table } from "react-bootstrap";
 import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
 import './operatorForm.css'
 import swal from "sweetalert";

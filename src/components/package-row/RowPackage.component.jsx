@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Row, Col, Card, Container, Button}  from "react-bootstrap";
+import { Row, Col, Card, Container}  from "react-bootstrap";
 import { faBox, faEdit } from "@fortawesome/free-solid-svg-icons";
 import "./PackageList.css";
 
