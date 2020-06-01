@@ -1,6 +1,7 @@
 import React from "react";
-import { ListGroup, Container, Row, Column }  from "react-bootstrap";
+import { ListGroup, Container}  from "react-bootstrap";
 import PackageUser from "./RowPackage.component";
+import "./PackageList.css";
 
 const PackageList = (props) => {
   console.log(props)
@@ -15,7 +16,7 @@ const PackageList = (props) => {
     return( 
 
   <ListGroup>
-    <Container>
+    <Container className = "lista">
         {item}
     </Container>
   </ListGroup>
