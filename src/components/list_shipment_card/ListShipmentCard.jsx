@@ -17,11 +17,17 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
     const consultar = enProgreso ? "Consultar Estado" : "Consultar Historia"
     const color = enProgreso ? "#845ec2" : "rgba(214,93,177,0.8)"
     let icon = faPlaneDeparture;
-    if (tipo === "MARITIMO") {
+    if (tipo === "Maritimo") {
         icon = faShip;
-    } else if (tipo === "TERRESTRE") {
+    } else if (tipo === "Terrestre") {
         icon = faTruck;
     }
+    let finalizado = "Finalizado";
+    progress.forEach(item => {
+        if(item.shippingStatusHistoryStatus === 0){
+            finalizado = "En progreso";
+        }
+    });
     return (
         <Card style={{backgroundColor: isGrey ? "#F8F8F8" : "#FFF"}}>
             <Card.Body>
@@ -30,8 +36,8 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
                         <Col md={8} xs={8}>
                             <h6 style={{fontSize: "14px"}}>{tipo + "#" + id}</h6>
                             <Card.Title style={{marginBottom: 0, marginTop: "6px"}}>Envio a {destino}</Card.Title>
-                            <h6 style={{color: color}}>{progreso}</h6>
-                            <p style={{fontSize: "13px"}}>{fecha}</p>
+                            <h6 style={{color: color}}>{finalizado}</h6>
+                            <p style={{fontSize: "13px"}}>{fecha.toString()}</p>
                         </Col>
                         <Col md={4} xs={4} className="d-flex flex-nowrap align-items-center">
                             <FontAwesomeIcon icon={icon} className={"icon_shippment"}/>

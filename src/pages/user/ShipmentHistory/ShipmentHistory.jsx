@@ -15,6 +15,25 @@ class ShipmentHistory extends React.Component {
 
 
     componentDidMount() {
+        let body = {
+            token:localStorage.getItem("token")
+        }
+        let headers = {
+            "content-type": "application/json",
+        }
+        console.log(body);
+        body = JSON.stringify(body);
+        fetch("https://fastrabbitback.herokuapp.com/api/shipping/getshippingsuser",{
+            body,
+            headers,
+            method:"post"
+        }).then(res => res.json())
+            .then(res => {
+                if(res.success){
+                    console.log(res.shippings);
+                    this.setState({data:res.shippings});
+                }
+            })
         const data = [
             {
                 destino: "USA",
@@ -274,7 +293,7 @@ class ShipmentHistory extends React.Component {
             },
 
         ];
-        this.setState({data: data})
+        //this.setState({data: data})
     }
 
     render() {
