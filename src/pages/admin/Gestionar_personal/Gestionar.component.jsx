@@ -32,7 +32,6 @@ class Gestionar extends React.Component{
         let headers = {
             "content-type": "application/json",
         }
-
         fetch("https://fastrabbitback.herokuapp.com/api/admin/getallemployee", {
             method: "post",
                 body: JSON.stringify(body),

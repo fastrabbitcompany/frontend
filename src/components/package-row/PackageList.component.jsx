@@ -7,8 +7,8 @@ const PackageList = (props) => {
   console.log(props)
     const item = props.data.map((pack,i) => {
         return(
-          <div onClick = {() => props.parentFunction(pack.id, props.parent)} >
-            <PackageUser id = {pack.id} origen = {pack.origen} destino = {pack.destino} key = {i} />
+          <div onClick = {() => props.parentFunction(pack.shippingId,pack.ShippingStatusHistories,props.parent)} >
+            <PackageUser id = {pack.shippingId} origen = {pack.Origen} destino = {pack.Destination} key = {i} />
           </div>
         )
         

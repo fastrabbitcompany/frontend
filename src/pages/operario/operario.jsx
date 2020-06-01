@@ -13,14 +13,15 @@ class Operario extends React.Component{
         this.state = {
             toggle:false,
             data: [],
-            idActive: ""
+            idActive: "",
+            locations:[],
         }
     }
 
-    handleIdClick(id,parent){
-        console.log(id)
+    handleIdClick(id,locations,parent){
         parent.setState({
-            idActive:id
+            idActive:id,
+            locations:locations
         })
     }
 
@@ -37,37 +38,53 @@ class Operario extends React.Component{
     }
 
     componentDidMount(){
-        const data = [
-            {
-                id: 1,
-                origen: "Cali",
-                destino: "Bogota"
-            },
-            {
-                id: 2,
-                origen: "Cali",
-                destino: "Ibague"
-            },
-            {
-                id: 3,
-                origen: "Bogota",
-                destino: "Pereira"
-            },
-            {
-                id: 4,
-                origen: "Ibague",
-                destino: "Barranquilla"
-            },
-            {
-                id: 5,
-                origen: "Barranquilla",
-                destino: "Pereira"
-            },
-
-        ]
-        this.setState({
-            data: data 
-        })
+        // const data = [
+        //     {
+        //         id: 1,
+        //         origen: "Cali",
+        //         destino: "Bogota"
+        //     },
+        //     {
+        //         id: 2,
+        //         origen: "Cali",
+        //         destino: "Ibague"
+        //     },
+        //     {
+        //         id: 3,
+        //         origen: "Bogota",
+        //         destino: "Pereira"
+        //     },
+        //     {
+        //         id: 4,
+        //         origen: "Ibague",
+        //         destino: "Barranquilla"
+        //     },
+        //     {
+        //         id: 5,
+        //         origen: "Barranquilla",
+        //         destino: "Pereira"
+        //     },
+        //
+        // ]
+        let body = {
+            token:localStorage.getItem("token")
+        }
+        let headers = {
+            "content-type": "application/json",
+        }
+        console.log(body);
+        body = JSON.stringify(body);
+        fetch("https://fastrabbitback.herokuapp.com/api/shipping/getshippings",{
+            body,
+            headers,
+            method:"post"
+        }).then(res => res.json())
+            .then(res => {
+                if(res.success){
+                    console.log(res.shippings);
+                    this.setState({data:res.shippings});
+                }
+            })
     }
 
 
@@ -102,7 +119,7 @@ class Operario extends React.Component{
                     <PackageList parent = {this} data = {this.state.data} parentFunction={this.handleIdClick}/>   
                 </div>
                 <div>
-                    <Form idToShow = {this.state.idActive}/>                    
+                    <Form idToShow = {this.state.idActive} locations={this.state.locations}/>
                 </div>
             </div>
         );
