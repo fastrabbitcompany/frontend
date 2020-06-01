@@ -1,0 +1,22 @@
+.UpdateTitle{
+    text-align: center;
+    font-size: large;
+    padding: 2%;
+}
+
+.idPackage{
+    margin-left: 2%;
+    margin-right: 20%;
+    margin-top: 5%;
+}
+
+.statusPackage{
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
+.UpdatePackage{
+    margin-left: 40%;
+    margin-top: 4%;
+    
+}
