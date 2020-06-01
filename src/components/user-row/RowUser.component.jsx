@@ -1,28 +1,56 @@
-import React from "react";
+import React, {useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import swal from 'sweetalert';
-import { Row, Col, Card, Container, Button}  from "react-bootstrap";
+import { Row, Col, Card, Container, Button, Modal}  from "react-bootstrap";
 import { faUserCircle, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import UserForm from '../admin-control/UpdateUserForm.component';
 import "./RowUser.css";
 
 
-const RowUser = ({name, rol, lugar}) => {
+const RowUser = (props) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
   function alerta(){
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
+      text: "You going to delete this user!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
-        swal("Poof! Your imaginary file has been deleted!", {
-          icon: "success",
-        });
+        let body = {
+          username:props.username,
+          employeeIsActive:0
+      }   
+      let headers = {
+          "content-type": "application/json",
+      }
+        console.log("body delete",body)
+      fetch("https://fastrabbitback.herokuapp.com/api/admin/updateemployee", {
+          method: "post",
+              body: JSON.stringify(body),
+              headers: headers
+      }).then(res => res.json())
+      .then(res => {
+        if(res.success){
+          console.log(res)
+          swal("Poof! This user has been deleted", {
+            icon: "success",
+          });
+          window.location.reload(false)
+        } else {
+          swal("error","No se pudo eliminar","error");
+        }
+      })
+
       } else {
-        swal("Your imaginary file is safe!");
+        swal("This user was not deleted!");
       }
     });
   } 
@@ -34,13 +62,30 @@ const RowUser = ({name, rol, lugar}) => {
           <Col className = "Icono" xs={1}>
             <FontAwesomeIcon icon= { faUserCircle } size = "2x"/>
           </Col>
-          <Col className = "Info" xs={2}> {name} </Col>
-          <Col className = "Info" xs={2}> {rol} </Col>
-          <Col className = "Info" xs={2}> {lugar} </Col>
+          <Col className = "Info" lg = {4} xs={2}> {props.name} </Col>
+          <Col className = "Info" lg = {3} xs={2}> {props.role} </Col>
           <Col xs={3}>
           <Button variant = "light">
-            <FontAwesomeIcon icon= { faEdit } onClick = {() => this.props.history.push("/edit-worker")} style = {{color: "green"  }}/>
+            <Button icon= { faEdit } onClick={handleShow} style = {{color: "green"  }}/>
           </Button>
+            <Modal
+                size="lg"
+                show={show}
+                onHide={handleClose}
+                aria-labelledby="example-modal-sizes-title-lg"
+                animation={false}
+                style={{opacity:1}}
+                fade={false}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="example-modal-sizes-title-lg">
+                  Edit User
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <UserForm data={props}/>
+              </Modal.Body>
+            </Modal>
           <Button variant = "light">
             <FontAwesomeIcon icon= { faTrashAlt } onClick= {() => alerta()  } style = {{color: "red "  }}/>
             

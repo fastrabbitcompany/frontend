@@ -3,48 +3,50 @@ import UserList from "../../../components/user-row/UserList.component";
 import Barra from '../../../components/bar-nav/NavBar.component';
 import './admin.styles.css';
 import SideBar from "../../../components/side-bar/SideBar";
+import swal from "sweetalert";
 
 class Gestionar extends React.Component{
-    constructor (props) {
+
+    constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data:[],
+            username: "",
+            email: "",
+            password: "",
+            phoneNumber: "",
+            first_name: "",
+            last_name: "",
+            address: "",
+            employeeIsActive:"",
+            employeeRole:"",
+            token:""
         }
     }
-    componentDidMount(){
-        const data = [
-            {
-                name: "Juan",
-                rol: "Operario",
-                lugar: "Bogota"
-            },
-            {
-                name: "Jack",
-                rol: "Transportador",
-                lugar: "Ibague"
-            },
-            {
-                name: "Gru",
-                rol: "Operario",
-                lugar: "Cali"
-            },
-            {
-                name: "Kathe",
-                rol: "Transportador",
-                lugar: "Barranquilla"
-            },
-            {
-                name: "Juliana",
-                rol: "Operario",
-                lugar: "Pereira"
-            },
 
-        ]
-        this.setState({
-            data: data 
+
+    componentDidMount(){
+        let body = {
+            token: localStorage.getItem("token")
+        }   
+        let headers = {
+            "content-type": "application/json",
+        }
+        fetch("https://fastrabbitback.herokuapp.com/api/admin/getallemployee", {
+            method: "post",
+                body: JSON.stringify(body),
+                headers: headers
+        }).then(res => res.json())
+        .then(res => {
+            console.log(res)
+            if(res.success){
+                this.setState({
+                    data: res.users
+                })
+            }
         })
+        
     }
-    
     
     render(){
     return(

@@ -5,7 +5,7 @@ import "./ListShipmentContainer.styles.css"
 const ListShipmentContainer = (props) => {
     const items = props.data.map((shipment,i) => {
         return(
-            <ListShipmentCard destino={shipment.destino} progress={shipment.progress} tipo={shipment.tipo} fecha={shipment.fecha} enProgreso={shipment.enProgreso} key={i} id={i} isGrey={i%2===1}/>
+            <ListShipmentCard destino={shipment.Destination} progress={shipment.ShippingStatusHistories} tipo={shipment.Connection.Modality.modalityName} fecha={new Date(shipment.date)}  key={i} id={shipment.shippingId} isGrey={i%2===1}/>
         );
     });
     return(

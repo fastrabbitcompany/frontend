@@ -5,16 +5,17 @@ import GoogleMap from "../map/GoogleMap";
 import {Button} from "react-bootstrap";
 
 const EstadoEnvio = ({progress}) => {
+    console.log(progress)
     const listaEstados = progress.map((item,i) => {
         return (
             <div>
                 <div className="d-flex bd-highlight" style={{backgroundColor:  i%2 === 1  ? "#F8F8F8":"#FFF"}}>
-                    <div className="p-2 flex-grow-1 bd-highlight">{item.name}</div>
+                    <div className="p-2 flex-grow-1 bd-highlight">{item.Route.Location.City.cityName}</div>
                     <div className="p-2 bd-highlight">
-                        {item.completed &&
+                        {(item.shippingStatusHistoryStatus === 1) &&
                         <FontAwesomeIcon icon={faCheckCircle} style={{fontSize: "1.5rem", color: "green"}}/>
                         }
-                        {!item.completed &&
+                        {(item.shippingStatusHistoryStatus === 0) &&
                         <FontAwesomeIcon icon={faSpinner} style={{fontSize: "1.5rem", color: "grey"}}/>
                         }
                     </div>

@@ -50,6 +50,7 @@ class Home extends React.Component {
             costo:0,
             distancia:0,
             tiempo:0,
+            connectionTravel:0
 
         }
     }
@@ -126,6 +127,7 @@ class Home extends React.Component {
                             costo:response.price,
                             distancia:response.distance,
                             tiempo:response.time,
+                            connectionTravel:response.connectionTravel
                         })
                     } else {
                         swal("Un error ha ocurrido", response.message, "error");
@@ -139,23 +141,38 @@ class Home extends React.Component {
     }
 
     enviarPedido = () => {
-        const {type,envio,origen,destino,ancho,alto,largo, direccion, peso } = this.state;
+        const {type,envio,origen,destino,ancho,alto,largo, direccion, peso, costo, connectionTravel } = this.state;
         if(envio !== -1 && ancho && alto && largo && type && direccion && peso){
             let body = {
-                type: type,
-                envio: envio,
-                origen:origen,
-                destino:destino,
-                volumen:ancho*alto*largo,
-                direccion:direccion,
-                peso:peso
+                shippingDescription:direccion,
+                shippingWidth:ancho,
+                shippingHeight:largo,
+                shippingWeight:peso,
+                shippingPrice:costo,
+                shippingConnection:connectionTravel,
+                token:localStorage.getItem("token")
+
             }
             let headers = {
                 "content-type": "application/json",
             }
+            console.log(body);
             body = JSON.stringify(body);
-            swal("Orden Creada !!!", "Por favor lleve su producto a uno de los puntos y proporcione el ID: 1477825", "success");
-            this.setState({progress:100,type:0,envio:-1,ancho:0,largo:0,alto:0,direccion:0,peso:0})
+            fetch("https://fastrabbitback.herokuapp.com/api/shipping/createshipping", {
+                method: "post",
+                body,
+                headers,
+            }).then(res => res.json())
+                .then(res => {
+                    if(res.success){
+                        swal("Orden Creada !!!", `Por favor lleve su producto a uno de los puntos y proporcione el ID: ${res.idShipping}`, "success");
+                    } else {
+                        swal("Error", "Ha ocurrido un error creando la orden", "error");
+                    }
+                    this.setState({progress:100,type:0,envio:-1,ancho:0,largo:0,alto:0,direccion:0,peso:0})
+                })
+
+
         } else {
             swal("Datos Incorrectos", "Por favor diligencie todos los datos del formulario!", "error");
         }
