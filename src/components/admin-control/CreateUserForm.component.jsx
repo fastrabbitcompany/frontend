@@ -40,7 +40,7 @@ class UpdateUserForm extends React.Component {
 
                 console.log(body)
 
-                fetch("https://fastrabbitback.herokuapp.com/api/admin/Employee", {
+                fetch("https://fastrabbitback.herokuapp.com/api/admin/createemployee", {
                     method: "post",
                     body: JSON.stringify(body),
                     headers: headers
@@ -141,9 +141,8 @@ class UpdateUserForm extends React.Component {
                             <Form.Group style={{textAlign: "left"}}>
                                 <Form.Label className="label-register">Seleccione el rol </Form.Label>
                                 <Form.Control as = "select" required>
-                                    <option>1</option>
-                                    <option>2</option>    
-                                    <option>3</option>
+                                    <option value ={1}>1. Administrador</option>
+                                    <option value ={2}>2. Operario</option>    
                                         onChange={(e) => this.setState({employeeRole: e.target.value})}
                                         value={this.state.employeeRole}
                                 </Form.Control>
