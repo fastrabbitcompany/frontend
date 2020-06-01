@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Container, Row, Col, Form, InputGroup, Table } from "react-bootstrap";
+import { Button, Container, Row, Col, Form, Table } from "react-bootstrap";
 import './operatorForm.css'
 
 class operatorForm extends Component{

@@ -14,14 +14,14 @@ class UpdateUserForm extends React.Component {
             first_name: "",
             last_name: "",
             address: "",
-            employeeRole:""
+            employeeRole:1
         }
     }
 
     handleRegister = (e) => {
         e.preventDefault();
-        const {first_name,last_name,address,phone,email,password } = this.state;
-        console.log(this.state)
+        const {first_name,last_name,address,phone,email,password,employeeRole } = this.state;
+        // console.log(this.state)
         if( first_name && last_name && address && phone && email){
             if( password.length>5) {
                 let body = {
@@ -32,7 +32,7 @@ class UpdateUserForm extends React.Component {
                     firstName: first_name,
                     lastName: last_name,
                     address: address,
-                    employeeRole:""
+                    employeeRole: employeeRole
                 }
                 let headers = {
                     "content-type": "application/json",
@@ -140,11 +140,9 @@ class UpdateUserForm extends React.Component {
 
                             <Form.Group style={{textAlign: "left"}}>
                                 <Form.Label className="label-register">Seleccione el rol </Form.Label>
-                                <Form.Control as = "select" required>
+                                <Form.Control as = "select" onChange={(e) => this.setState({employeeRole: e.target.value}, () => console.log(this.state.employeeRole)) } required>
                                     <option value ={1}>1. Administrador</option>
                                     <option value ={2}>2. Operario</option>    
-                                        onChange={(e) => this.setState({employeeRole: e.target.value})}
-                                        value={this.state.employeeRole}
                                 </Form.Control>
                             </Form.Group>
 
