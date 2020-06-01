@@ -96,7 +96,7 @@ class Operario extends React.Component{
                     }
                 ]} />
                 <div className={name}>
-                    <h1 className = "TitleList" >Operario</h1>
+                    <h1 className = "TitlePage" >Operario</h1>
                 </div>
                 <div>
                     <PackageList parent = {this} data = {this.state.data} parentFunction={this.handleIdClick}/>   

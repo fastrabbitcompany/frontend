@@ -24,7 +24,6 @@ const RowPackage = ({id, origen, destino}) => {
  
 }
 
-//onClick= {() => alerta()  }
 
 export default RowPackage;
 

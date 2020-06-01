@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroup, Container}  from "react-bootstrap";
+import { ListGroup, Container, Row, Col}  from "react-bootstrap";
 import PackageUser from "./RowPackage.component";
 import "./PackageList.css";
 
@@ -17,6 +17,11 @@ const PackageList = (props) => {
 
   <ListGroup>
     <Container className = "lista">
+      <Row className = "TitleList">
+          <Col lg = {3}> Id Package</Col>
+          <Col lg = {3}> Origen</Col>
+          <Col lg = {3}> Destino</Col>
+      </Row>
         {item}
     </Container>
   </ListGroup>
