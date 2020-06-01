@@ -5,7 +5,7 @@ import RowUser from "./RowUser.component";
 const UserList = (props) => {
     const item = props.data.map((person,i) => {
         return(
-            <RowUser name = {person.name} rol = {person.rol} lugar = {person.lugar} key = {i} />
+            <RowUser name = { person.UserEmployee.firstName + " " + person.UserEmployee.lastName }  rol = {person.RoleEmployee.roleName} username = {person.UserEmployee.username} key = {i} />
         )
         
     })
