@@ -7,8 +7,16 @@ class operator extends Component{
     constructor (props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            idActive: "1"
         }
+    }
+
+    handleIdClick(id,parent){
+        console.log(id)
+        parent.setState({
+            idActive:id
+        })
     }
 
     componentDidMount(){
@@ -48,8 +56,8 @@ class operator extends Component{
     render() {
         return (
             <Container> 
-                <PackageList data = {this.state.data} />   
-                <Form />
+                <PackageList parent = {this} data = {this.state.data} parentFunction={this.handleIdClick}/>   
+                <Form idToShow = {this.state.idActive}/>
             </Container>
         );      
     } 

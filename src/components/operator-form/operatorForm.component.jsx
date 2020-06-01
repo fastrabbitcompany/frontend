@@ -24,7 +24,8 @@ class operatorForm extends Component{
                                 </tr>
                                 <tr>
                                 <td>
-                                    <Form.Control size="md" type="text" placeholder="Id package" />
+                                    <p>{this.props.idToShow}</p>
+                               
                                 </td>
                                 <td>
                                 <Form.Control as = "select">

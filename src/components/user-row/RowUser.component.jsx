@@ -1,28 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import swal from 'sweetalert';
-import { Row, Col, Card, Container, Button}  from "react-bootstrap";
+import { Row, Col, Card, Container, Button, Modal}  from "react-bootstrap";
 import { faUserCircle, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import UserForm from '../inputs-form/UpdateUserForm.component';
 import "./RowUser.css";
 
 
 const RowUser = ({name, rol, lugar}) => {
+  const [lgShow, setLgShow] = useState(false);
 
   function alerta(){
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
+      text: "You going to delete this user!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
-        swal("Poof! Your imaginary file has been deleted!", {
+        swal("Poof! This user has been deleted", {
           icon: "success",
         });
       } else {
-        swal("Your imaginary file is safe!");
+        swal("This user was not deleted!");
       }
     });
   } 
@@ -39,7 +41,22 @@ const RowUser = ({name, rol, lugar}) => {
           <Col className = "Info" xs={2}> {lugar} </Col>
           <Col xs={3}>
           <Button variant = "light">
-            <FontAwesomeIcon icon= { faEdit } onClick = {() => this.props.history.push("/edit-worker")} style = {{color: "green"  }}/>
+            <FontAwesomeIcon icon= { faEdit } onClick={() => setLgShow(true)} style = {{color: "green"  }}/>
+          <Modal
+            size="lg"
+            show={lgShow}
+            onHide={() => setLgShow(false)}
+            aria-labelledby="example-modal-sizes-title-lg"
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="example-modal-sizes-title-lg">
+                Edit User
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <UserForm />
+            </Modal.Body>
+          </Modal>
           </Button>
           <Button variant = "light">
             <FontAwesomeIcon icon= { faTrashAlt } onClick= {() => alerta()  } style = {{color: "red "  }}/>
