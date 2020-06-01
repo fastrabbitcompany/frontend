@@ -24,6 +24,8 @@ const NavBar = () => {
                     show={lgShow}
                     onHide={() => setLgShow(false)}
                     aria-labelledby="example-modal-sizes-title-lg"
+                    animation={false}
+                    style={{opacity:1}}
                     >
                     <Modal.Header closeButton>
                         <Modal.Title id="example-modal-sizes-title-lg" >

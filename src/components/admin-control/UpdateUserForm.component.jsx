@@ -7,32 +7,33 @@ class UpdateUserForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
-            email: "",
-            password: "",
-            phoneNumber: "",
-            first_name: "",
-            last_name: "",
-            address: "",
-            employeeRole:""
+            username: this.props.data.username,
+            email: this.props.data.modal_email,
+            password:this.props.data.modal_password,
+            phone: this.props.data.modal_phoneNumber,
+            first_name: this.props.data.modal_firstName,
+            last_name: this.props.data.modal_lastName,
+            address: this.props.data.modal_address,
+            employeeRole:1
         }
+        console.log("props edit",this.props.data);
     }
     
     handleRegister = (e) => {
         e.preventDefault();
-        const {first_name,last_name,address,phone,email,password } = this.state;
+        const {first_name,last_name,address,phone,email,password,employeeRole } = this.state;
         console.log(this.state)
-        if( first_name && last_name && address && phone && email){
+        if( first_name && last_name && address && phone && email && employeeRole){
             if( password.length>5) {
                 let body = {
                     username:email.split("@")[0],
                     email: email,
                     password: password,
-                    phoneNumber: phone,
+                    phone: phone,
                     firstName: first_name,
                     lastName: last_name,
                     address: address,
-                    employeeRole:""
+                    employeeRole:employeeRole
                 }
                 let headers = {
                     "content-type": "application/json",
@@ -40,8 +41,8 @@ class UpdateUserForm extends React.Component {
 
                 console.log(body)
 
-                fetch("https://fastrabbitback.herokuapp.com/api/admin/updatemployee", {
-                    method: "put",
+                fetch("https://fastrabbitback.herokuapp.com/api/admin/updateemployee", {
+                    method: "post",
                     body: JSON.stringify(body),
                     headers: headers
                 })
@@ -51,15 +52,7 @@ class UpdateUserForm extends React.Component {
                     .then( (response) => {
                         console.log(response);
                         if(response.success){
-                            this.setState({
-                                first_name: "",
-                                last_name: "",
-                                address: "",
-                                phone: "",
-                                email: "",
-                                password: "",
-                                employeeRole:""
-                            });
+                           window.location.reload(false);
                             swal("Usuario Registrado","", "success");
                         } else {
                             swal("Error al registra", response.message, "error");
@@ -136,6 +129,15 @@ class UpdateUserForm extends React.Component {
                                               onChange={(e) => this.setState({password: e.target.value})}
                                               value={this.state.password}
                                 />
+                            </Form.Group>
+
+
+                            <Form.Group style={{textAlign: "left"}}>
+                                <Form.Label className="label-register">Seleccione el rol </Form.Label>
+                                <Form.Control as = "select" onChange={(e) => this.setState({employeeRole: e.target.value}, () => console.log(this.state.employeeRole)) } required>
+                                    <option value ={1}>1. Administrador</option>
+                                    <option value ={2}>2. Operario</option>
+                                </Form.Control>
                             </Form.Group>
 
                             <Button variant="none" className="reg w-100" type="submit"> Update user </Button>
