@@ -66,7 +66,7 @@ const RowUser = (props) => {
           <Col className = "Info" lg = {3} xs={2}> {props.role} </Col>
           <Col xs={3}>
           <Button variant = "light">
-            <Button icon= { faEdit } onClick={handleShow} style = {{color: "green"  }}/>
+            <FontAwesomeIcon icon= { faEdit } onClick={handleShow} style = {{color: "green"  }}/>
           </Button>
             <Modal
                 size="lg"
