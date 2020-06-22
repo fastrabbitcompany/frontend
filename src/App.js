@@ -4,7 +4,7 @@ import {Route, Switch} from "react-router-dom";
 import Login from "./pages/login/Login.component"
 import Register from "./pages/register/Register.component"
 import Gestionar from "./pages/admin/Gestionar_personal/Gestionar.component"
-import Estadisticas from "./pages/admin/Estadisticas/Estadisticas.component";
+import Envios from "./pages/admin/Estadisticas/Envios.component";
 import Home from "./pages/user/createShipping/createShipping"
 import Operario from "./pages/operario/operario";
 import ShipmentHistory from "./pages/user/ShipmentHistory/ShipmentHistory";
@@ -73,7 +73,7 @@ class App extends Component {
             this.props.history.push("/admin/home");
         }
         if (key === "estadis") {
-            this.props.history.push("/admin/estadisticas");
+            this.props.history.push("/admin/envios");
         }
         if (key === "signOut") {
             this.handleLoggedIn("false");
@@ -146,7 +146,7 @@ class App extends Component {
                 <ProtectedRoute exact path="/admin/home" logged={this.state.isLoggedIn} component={Gestionar} typeRole = "Admin"
                                 handler={this.handleLoggedIn} handlerNav={this.HandlerNavAdmin}
                                 sideBarData={sideBarDataAdmin}/> />
-                <ProtectedRoute exact path="/admin/estadisticas" logged={this.state.isLoggedIn} component={Estadisticas} typeRole = "Admin"
+                <ProtectedRoute exact path="/admin/envios" logged={this.state.isLoggedIn} component={Envios} typeRole = "Admin"
                                 handler={this.handleLoggedIn} handlerNav={this.HandlerNavAdmin}
                                 sideBarData={sideBarDataAdmin}/> />
                 <Route path="*" component={() => "404 NOT FOUND"} />

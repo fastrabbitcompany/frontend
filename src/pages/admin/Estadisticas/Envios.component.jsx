@@ -1,8 +1,9 @@
 import React from 'react';
 import SideBar from "../../../components/side-bar/SideBar";
 import {MDBDataTable} from "mdbreact";
+import TableEnvios from "./TableEnvios";
 
-class Estadisticas extends React.Component {
+class Envios extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -109,12 +110,7 @@ class Estadisticas extends React.Component {
                 <SideBar handler={this.props.handlerNav} data={this.props.sideBarData}/>
                 <div className={"mt-4"} style={{marginLeft: "70px"}}>
                     <h1>Lista de Envios</h1>
-                    <MDBDataTable
-                        striped
-                        bordered
-                        small
-                        data={this.state.data}
-                    />
+                    <TableEnvios data={this.state.data}/>
                 </div>
 
             </div>
@@ -123,4 +119,4 @@ class Estadisticas extends React.Component {
     }
 }
 
-export default Estadisticas;
+export default Envios;
