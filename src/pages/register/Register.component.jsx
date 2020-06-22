@@ -148,6 +148,6 @@ class Register extends React.Component {
             </div>
         );
     }
-};
+}
 
 export default withRouter(Register);

@@ -1,16 +1,15 @@
 import React from "react";
 import {MDBDataTable} from "mdbreact";
-import {render} from "@testing-library/react";
 
 const TableEnvios = (props) => {
-    return(
+    return (
         <div>
-        <MDBDataTable
-            striped
-            bordered
-            small
-            data={props.data}
-        />
+            <MDBDataTable
+                striped
+                bordered
+                small
+                data={props.data}
+            />
         </div>
     )
 }

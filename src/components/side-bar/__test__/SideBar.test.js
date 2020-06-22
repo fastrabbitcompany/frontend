@@ -4,7 +4,6 @@ import SideBar from "../SideBar";
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {faBell, faBox, faHistory, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
-import ListShipmentCard from "../../list_shipment_card/ListShipmentCard";
 
 let handlerButton1 = jest.fn();
 let handlerButton2 = jest.fn();
@@ -50,10 +49,10 @@ configure({adapter: new Adapter()});
 describe("Test Side Bar", () => {
     it("renders without crashing", () => {
         const div = document.createElement("div");
-        ReactDom.render(<SideBar data={sideBarDataUser}  handler={HandlerNavUser}/>, div);
+        ReactDom.render(<SideBar data={sideBarDataUser} handler={HandlerNavUser}/>, div);
     });
     it("renders buttons correctly", () => {
-        const component = mount(<SideBar data={sideBarDataUser}  handler={HandlerNavUser}/>);
+        const component = mount(<SideBar data={sideBarDataUser} handler={HandlerNavUser}/>);
         let btn1 = component.find('#btn-text').first();
         let btn2 = component.find('#btn-text').at(1);
         let btn3 = component.find('#btn-text').at(2);
@@ -66,7 +65,7 @@ describe("Test Side Bar", () => {
 
 
     it("Calls the respective buttons correctly", () => {
-        const component = mount(<SideBar data={sideBarDataUser}  handler={HandlerNavUser}/>);
+        const component = mount(<SideBar data={sideBarDataUser} handler={HandlerNavUser}/>);
         component.find('#btn-click-test').at(0).simulate("click");
         expect(handlerButton1.mock.calls.length).toBe(1);
         component.find('#btn-click-test').at(0).simulate("click");
