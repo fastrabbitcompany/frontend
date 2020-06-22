@@ -56,25 +56,6 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        const data_select = [
-            {
-                id: 0,
-                name: "Bogota"
-            },
-            {
-                id: 1,
-                name: "Medellin"
-            },
-            {
-                id: 2,
-                name: "Barranquilla"
-            },
-            {
-                id: 3,
-                name: "Villavicencio"
-            },
-
-        ]
         fetch("https://fastrabbitback.herokuapp.com/api/city/getall", {
             method: "POST",
             body: JSON.stringify({token:localStorage.getItem("token")}),
@@ -143,7 +124,7 @@ class Home extends React.Component {
     }
 
     enviarPedido = () => {
-        const {type,envio,origen,destino,ancho,alto,largo, direccion, peso, costo, connectionTravel } = this.state;
+        const {type,envio,ancho,alto,largo, direccion, peso, costo, connectionTravel } = this.state;
         if(envio !== -1 && ancho && alto && largo && type && direccion && peso){
             let body = {
                 shippingDescription:direccion,

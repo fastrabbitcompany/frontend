@@ -155,6 +155,6 @@ class UpdateUserForm extends React.Component {
             </div>
         );
     }
-};
+}
 
 export default UpdateUserForm;

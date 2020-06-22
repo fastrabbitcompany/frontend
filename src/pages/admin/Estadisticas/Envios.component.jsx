@@ -1,6 +1,5 @@
 import React from 'react';
 import SideBar from "../../../components/side-bar/SideBar";
-import {MDBDataTable} from "mdbreact";
 import TableEnvios from "./TableEnvios";
 
 class Envios extends React.Component {

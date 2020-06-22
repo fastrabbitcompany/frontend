@@ -1,10 +1,6 @@
 import React, {useState} from "react";
-import {Button, Container, Row, Col, Card, Collapse} from "react-bootstrap";
-import {
-    faPlaneDeparture,
-    faTruck,
-    faShip,
-} from "@fortawesome/free-solid-svg-icons";
+import {Button, Card, Col, Collapse, Container, Row} from "react-bootstrap";
+import {faPlaneDeparture, faShip, faTruck,} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import "./ListShippmentCard.styles.css"
 import EstadoEnvio from "../estado-envio/EstadoEnvio";
@@ -13,7 +9,6 @@ import EstadoEnvio from "../estado-envio/EstadoEnvio";
 const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progress}) => {
     const [open, setOpen] = useState(false);
     const id_colapse = `Envio${destino}${tipo}${id}`;
-    const progreso = enProgreso ? "En Progreso" : "Finalizado"
     const consultar = enProgreso ? "Consultar Estado" : "Consultar Historia"
     const color = enProgreso ? "#845ec2" : "rgba(214,93,177,0.8)"
     let icon = faPlaneDeparture;
@@ -24,7 +19,7 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
     }
     let finalizado = "Finalizado";
     progress.forEach(item => {
-        if(item.shippingStatusHistoryStatus === 0){
+        if (item.shippingStatusHistoryStatus === 0) {
             finalizado = "En progreso";
         }
     });
@@ -35,7 +30,8 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
                     <Row>
                         <Col md={8} xs={8}>
                             <h6 className={"tipo_id"} style={{fontSize: "14px"}}>{tipo + "#" + id}</h6>
-                            <Card.Title className={"destinoship"} style={{marginBottom: 0, marginTop: "6px"}}>Envio a {destino}</Card.Title>
+                            <Card.Title className={"destinoship"} style={{marginBottom: 0, marginTop: "6px"}}>Envio
+                                a {destino}</Card.Title>
                             <h6 className={"status_shippment"} style={{color: color}}>{finalizado}</h6>
                             <p style={{fontSize: "13px"}}>{fecha.toString()}</p>
                         </Col>
@@ -50,7 +46,7 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
                 <Collapse in={open} className={"mt-2"}>
                     <div id={id_colapse}>
                         <hr/>
-                        <EstadoEnvio  id={id} progress={progress}/>
+                        <EstadoEnvio id={id} progress={progress}/>
                     </div>
                 </Collapse>
             </Card.Body>
