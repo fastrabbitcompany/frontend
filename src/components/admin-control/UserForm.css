@@ -1,0 +1,23 @@
+.registerForm{
+    text-align: center;
+    display: flex;
+}
+
+@media only screen and (min-width: 600px) {
+    .card-registerForm {
+      width: 100%;
+    }
+    .registerForm{
+        text-align: center;
+        display: flex;
+        height: 100%;
+    }
+  }
+
+.title-registerForm{
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+
+
+
