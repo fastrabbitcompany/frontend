@@ -29,14 +29,14 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
         }
     });
     return (
-        <Card style={{backgroundColor: isGrey ? "#F8F8F8" : "#FFF"}}>
+        <Card key={id} style={{backgroundColor: isGrey ? "#F8F8F8" : "#FFF"}}>
             <Card.Body>
                 <Container fluid className={"mt-2"}>
                     <Row>
                         <Col md={8} xs={8}>
-                            <h6 style={{fontSize: "14px"}}>{tipo + "#" + id}</h6>
-                            <Card.Title style={{marginBottom: 0, marginTop: "6px"}}>Envio a {destino}</Card.Title>
-                            <h6 style={{color: color}}>{finalizado}</h6>
+                            <h6 className={"tipo_id"} style={{fontSize: "14px"}}>{tipo + "#" + id}</h6>
+                            <Card.Title className={"destinoship"} style={{marginBottom: 0, marginTop: "6px"}}>Envio a {destino}</Card.Title>
+                            <h6 className={"status_shippment"} style={{color: color}}>{finalizado}</h6>
                             <p style={{fontSize: "13px"}}>{fecha.toString()}</p>
                         </Col>
                         <Col md={4} xs={4} className="d-flex flex-nowrap align-items-center">
@@ -50,7 +50,7 @@ const ListShipmentCard = ({destino, tipo, fecha, isGrey, id, enProgreso, progres
                 <Collapse in={open} className={"mt-2"}>
                     <div id={id_colapse}>
                         <hr/>
-                        <EstadoEnvio progress={progress}/>
+                        <EstadoEnvio  id={id} progress={progress}/>
                     </div>
                 </Collapse>
             </Card.Body>

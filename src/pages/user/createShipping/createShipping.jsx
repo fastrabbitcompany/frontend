@@ -122,17 +122,19 @@ class Home extends React.Component {
                     return response.json();
                 })
                 .then( (response) => {
+                    console.log(response)
                     if(response.success){
                         this.setState({
                             costo:response.price,
                             distancia:response.distance,
                             tiempo:response.time,
-                            connectionTravel:response.connectionTravel
+                            connectionTravel:response.connectionTravel,
                         })
                     } else {
                         swal("Un error ha ocurrido", response.message, "error");
                     }
                 });
+            console.log("here")
            this.setState({progress:50,cotizado:true})
         } else {
             swal("Datos Incorrectos", "Por favor diligencie todos los datos del formulario!", "error");
@@ -205,7 +207,7 @@ class Home extends React.Component {
                                         <h3 style={{color: "#845ec2"}}>Tipo de Envio:</h3>
                                         <Row className={"mt-4"}>
                                             <Col xs={4} className="text-center colBot">
-                                                <Button variant={"none"} id="buttonTruck" className={"button-type"}
+                                                <Button data-testid="choose-truck" variant={"none"} id="buttonTruck" className={"button-type"}
                                                         style={{"boxShadow": type === 2 ? "0 0 5px #7d3c98" : "none"}}
                                                         onClick={() => this.setState({type: 2})}>
                                                     <FontAwesomeIcon icon={faPlaneDeparture} className={"icon_create"}/>
@@ -233,6 +235,7 @@ class Home extends React.Component {
                                                     label="Envio Nacional"
                                                     name="formHorizontalRadios"
                                                     id="formHorizontalRadios1"
+                                                    data-testid="choose-nacional"
                                                     onClick={() => this.setState({envio: 1})}
                                                 />
                                                 <Form.Check
@@ -246,41 +249,41 @@ class Home extends React.Component {
                                         </fieldset>
                                         <Form.Group className={"mt-2"} controlId="exampleForm.ControlSelect1">
                                             <Form.Label style={{fontSize: "20px"}}>Origen</Form.Label>
-                                            <Form.Control size="sm" as="select"
+                                            <Form.Control data-testid="select-origen" size="sm" as="select"
                                                           onChange={(e) => this.setState({origen: e.target.value})}>
-                                                {this.state.data_select.map(city => (
+                                                {this.state.data_select!== undefined? this.state.data_select.map(city => (
                                                         <option key={city.cityId} value={city.cityId}>{city.cityName}</option>
                                                     )
-                                                )}
+                                                ):null}
                                             </Form.Control>
                                         </Form.Group>
                                         <Form.Group controlId="exampleForm.ControlSelect1">
                                             <Form.Label style={{fontSize: "20px"}}>Destino</Form.Label>
-                                            <Form.Control size="sm" as="select"
+                                            <Form.Control data-testid="select-destino" size="sm" as="select"
                                                           onChange={(e) => this.setState({destino: e.target.value})}>
-                                                {this.state.data_select.map(city => (
+                                                {this.state.data_select!== undefined? this.state.data_select.map(city => (
                                                         <option key={city.cityId} value={city.cityId}>{city.cityName}</option>
                                                     )
-                                                )}
+                                                ):null}
                                             </Form.Control>
                                         </Form.Group>
                                         <Row>
                                             <Col xs={12} md={6}>
-                                                <InputForm type="number" placeholder="Ancho (Cm) " icon={faRulerCombined}
+                                                <InputForm type="number"  placeholder="Ancho (Cm)" icon={faRulerCombined}
                                                            handler={(e) => this.setState({ancho: e.target.value})}/>
                                             </Col>
                                             <Col xs={12} md={6}>
-                                                <InputForm type="number" placeholder="Largo (Cm)" icon={faRulerHorizontal}
+                                                <InputForm type="number"  placeholder="Largo (Cm)" icon={faRulerHorizontal}
                                                            handler={(e) => this.setState({alto: e.target.value})}/>
                                             </Col>
                                         </Row>
                                         <Row>
                                             <Col xs={12} md={6}>
-                                                <InputForm type="number" placeholder="Alto (Cm)" icon={faRulerVertical}
+                                                <InputForm type="number"  placeholder="Alto (Cm)" icon={faRulerVertical}
                                                            handler={(e) => this.setState({largo: e.target.value})}/>
                                             </Col>
                                             <Col xs={12} md={6}>
-                                                <InputForm type="number" placeholder="Peso" icon={faWeightHanging}
+                                                <InputForm type="number"  placeholder="Peso" icon={faWeightHanging}
                                                            handler={(e) => this.setState({peso: e.target.value})}/>
                                             </Col>
                                         </Row>
@@ -288,10 +291,11 @@ class Home extends React.Component {
                                                 aria-controls={"colapse_create"}
                                                 aria-expanded={this.state.open}
                                                 onClick={this.cotizar}
+                                                data-testid="cotizar"
                                         >
                                             Cotizar </Button>
                                     </Form>
-                                    <Form style={{display: this.state.cotizado ? "":"none"}}>
+                                    <Form data-testid="formSegundoPaso" style={{display: this.state.cotizado ? "":"none"}}>
                                         <Button variant={"none"} className={"button-type"} style={{border:"0"}}
                                         onClick={() => this.setState({progress:0,cotizado:false})}>
                                             <FontAwesomeIcon icon={faArrowLeft} style={{fontSize:"1.5rem"}} />
