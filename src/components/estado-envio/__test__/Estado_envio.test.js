@@ -3,25 +3,23 @@ import ReactDom from "react-dom"
 import EstadoEnvio from "../EstadoEnvio";
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ListShipmentCard from "../../list_shipment_card/ListShipmentCard";
-import {faPlaneDeparture} from "@fortawesome/free-solid-svg-icons";
 
 const testValues = [{
-        Route: {Location: {City: {cityName: "test"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test2"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test3"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test4"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test5"}}},
-        shippingStatusHistoryStatus: 0
-    }];
+    Route: {Location: {City: {cityName: "test"}}},
+    shippingStatusHistoryStatus: 1
+}, {
+    Route: {Location: {City: {cityName: "test2"}}},
+    shippingStatusHistoryStatus: 1
+}, {
+    Route: {Location: {City: {cityName: "test3"}}},
+    shippingStatusHistoryStatus: 1
+}, {
+    Route: {Location: {City: {cityName: "test4"}}},
+    shippingStatusHistoryStatus: 1
+}, {
+    Route: {Location: {City: {cityName: "test5"}}},
+    shippingStatusHistoryStatus: 0
+}];
 
 const testValues2 = [{
     Route: {Location: {City: {cityName: null}}},

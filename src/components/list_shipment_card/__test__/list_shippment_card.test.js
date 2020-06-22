@@ -10,34 +10,34 @@ const testValues = {
         Route: {Location: {City: {cityName: "test"}}},
         shippingStatusHistoryStatus: 1
     }, {
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test2"}}},
         shippingStatusHistoryStatus: 1
     }, {
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test3"}}},
         shippingStatusHistoryStatus: 1
     }, {
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test4"}}},
         shippingStatusHistoryStatus: 1
     }, {
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test5"}}},
         shippingStatusHistoryStatus: 0
     }]
 };
 const testValues2 = {
     destino: "", tipo: "Terrestre", fecha: "", isGrey: true, id: 1, enProgreso: 1, progress: [{
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test6"}}},
         shippingStatusHistoryStatus: 1
     }, {
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test7"}}},
         shippingStatusHistoryStatus: 1
     }, {
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test8"}}},
         shippingStatusHistoryStatus: 1
     }, {
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test9"}}},
         shippingStatusHistoryStatus: 1
     }, {
-        Route: {Location: {City: {cityName: "test"}}},
+        Route: {Location: {City: {cityName: "test10"}}},
         shippingStatusHistoryStatus: 1
     }]
 };
@@ -60,8 +60,8 @@ describe("Test List of Shippments", () => {
     });
     it("renders ship icon", () => {
         const component = mount(<ListShipmentCard {...testValues}/>);
-        let icon = component.find('.icon_shippment').first();
-        const iconSrc = icon.prop('icon');
+        let icon4 = component.find('.icon_shippment').first();
+        const iconSrc = icon4.prop('icon');
         expect(iconSrc).toBe(faShip);
     });
     it("renders plane icon", () => {
@@ -72,20 +72,18 @@ describe("Test List of Shippments", () => {
     });
     it("renders truck icon", () => {
         const component = mount(<ListShipmentCard {...testValues2}/>);
-        let icon = component.find('.icon_shippment').first();
-        const iconSrc = icon.prop('icon');
+        let icon2 = component.find('.icon_shippment').first();
+        const iconSrc = icon2.prop('icon');
         expect(iconSrc).toBe(faTruck);
     });
     it("updates status of shippment to ´en progreso´", () => {
         const component = mount(<ListShipmentCard {...testValues}/>);
-        let icon = component.find('.status_shippment').first();
-        const iconSrc = icon.prop('html');
-        expect(icon.text()).toBe("En progreso");
+        let icon3 = component.find('.status_shippment').first();
+        expect(icon3.text()).toBe("En progreso");
     });
     it("updates status of shippment to 'Finalizado'", () => {
         const component = mount(<ListShipmentCard {...testValues2}/>);
         let icon = component.find('.status_shippment').first();
-        const iconSrc = icon.prop('html');
         expect(icon.text()).toBe("Finalizado");
     });
 })
