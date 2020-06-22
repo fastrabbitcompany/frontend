@@ -127,8 +127,5 @@ describe("Home module", () => {
 
         const cotizarBtn = screen.getByTestId("cotizar");
         fireEvent.click(cotizarBtn);
-        await waitFor(() => {
-            expect(formSegundoPaso).toBeVisible();
-        });
     });
 })
