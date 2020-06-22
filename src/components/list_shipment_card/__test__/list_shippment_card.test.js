@@ -11,15 +11,6 @@ const testValues = {
         shippingStatusHistoryStatus: 1
     }, {
         Route: {Location: {City: {cityName: "test2"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test3"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test4"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test5"}}},
         shippingStatusHistoryStatus: 0
     }]
 };
@@ -29,15 +20,6 @@ const testValues2 = {
         shippingStatusHistoryStatus: 1
     }, {
         Route: {Location: {City: {cityName: "test7"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test8"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test9"}}},
-        shippingStatusHistoryStatus: 1
-    }, {
-        Route: {Location: {City: {cityName: "test10"}}},
         shippingStatusHistoryStatus: 1
     }]
 };
