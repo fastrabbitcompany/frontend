@@ -61,6 +61,7 @@ class UpdateUserForm extends React.Component {
                                 employeeRole:""
                             });
                             swal("Usuario Registrado","", "success");
+                            setTimeout(function(){ window.location.reload(false)}, 1000);
                         } else {
                             swal("Error al registra", response.message, "error");
                         }

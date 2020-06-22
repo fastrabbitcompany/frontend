@@ -12,9 +12,6 @@ const NavBar = () => {
     return(
         <Container>
         <Row className = "CreateEmployee">
-            <Col>
-                <SearchBar></SearchBar>
-            </Col>
             <Col className = "ButtonEmployee" >
                 Add New Employee
                 <Button variant="outline-light" className = "ButEmployee" >
