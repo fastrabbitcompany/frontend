@@ -14,8 +14,8 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: "",
-            password: "",
+            userName: props.username,
+            password: props.password,
             showSpinner: false,
         }
     }
@@ -100,12 +100,12 @@ class Login extends Component {
                                 <Tilt className="Tilt" options={{max: 25}}>
                                     <Image src={Logo} style={{height: "300px"}} fluid/>
                                 </Tilt>
-                                <Form className="mt-3" onSubmit={this.handleSubmit}>
+                                <Form className="mt-3" id={"form"} onSubmit={this.handleSubmit}>
                                     <InputForm type="email" placeholder="Email" icon={faUser}
                                                handler={this.handleChangeName}/>
                                     <InputForm type="password" placeholder="Contraseña" icon={faKey}
                                                handler={this.handleChangePass}/>
-                                    <Button variant="none" className="prim w-100" type="submit">
+                                    <Button variant="none" id={"btnclick"}  className="prim w-100" type="submit">
                                         {this.state.showSpinner &&
                                         <Spinner ref="spinner" as="span" className="mr-2" animation="grow" size="sm"/>
                                         }

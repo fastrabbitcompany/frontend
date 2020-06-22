@@ -2,6 +2,11 @@ import React from "react";
 import ListShipmentCard from "../list_shipment_card/ListShipmentCard";
 import {Container} from "react-bootstrap";
 import "./ListShipmentContainer.styles.css"
+import {
+    faPlaneDeparture,
+    faTruck,
+    faShip,
+} from "@fortawesome/free-solid-svg-icons";
 const ListShipmentContainer = (props) => {
     const items = props.data.map((shipment,i) => {
         return(
