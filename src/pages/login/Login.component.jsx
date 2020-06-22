@@ -7,6 +7,7 @@ import Logo from "../../assets/rabbit.png"
 import Tilt from 'react-tilt';
 import {withRouter} from 'react-router-dom';
 import swal from 'sweetalert';
+import Alert from "react-bootstrap/Alert";
 
 
 
@@ -17,6 +18,8 @@ class Login extends Component {
             userName: props.username,
             password: props.password,
             showSpinner: false,
+            showError:false,
+            message:""
         }
     }
 
@@ -63,9 +66,6 @@ class Login extends Component {
             })
             .then( (response) => {
                 console.log(response);
-                this.setState({
-                    showSpinner: false
-                });
                 if(response.success){
                     localStorage.setItem("token",response.token);
                     localStorage.setItem("username",response.username);
@@ -78,8 +78,17 @@ class Login extends Component {
                         //User, Admin, Operario
                     }
                     console.log(localStorage.getItem("role"));
+                    this.setState({
+                        showSpinner: false
+                    });
                     this.props.handler("true");
                 } else {
+                    this.setState({
+                        showSpinner: false
+                    });
+                    this.setState({
+                        showError: true, message:response.message
+                    });
                     swal("Error", "", "error");
                 }
             });
@@ -105,11 +114,15 @@ class Login extends Component {
                                                handler={this.handleChangeName}/>
                                     <InputForm type="password" placeholder="Contraseña" icon={faKey}
                                                handler={this.handleChangePass}/>
-                                    <Button variant="none" id={"btnclick"}  className="prim w-100" type="submit">
+                                    <Button disabled={this.state.showSpinner} variant="none" id={"btnclick"}  className="prim w-100" type="submit">
                                         {this.state.showSpinner &&
                                         <Spinner ref="spinner" as="span" className="mr-2" animation="grow" size="sm"/>
                                         }
-                                        Iniciar Sesión </Button>
+                                        {this.state.showSpinner?"Loading...":"Iniciar Sesión"}  </Button>
+                                    <Alert className={"mt-2"} style={{height:"40px",display:this.state.showError?"":"none"}} variant="danger">
+                                        <p data-testid="error-message" style={{fontSize:"15px"}}>{this.state.message}</p>
+                                    </Alert>
+
                                     <Button
                                         variant="none"
                                         className="reg w-100 mt-2"
