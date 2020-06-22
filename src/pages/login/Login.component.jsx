@@ -105,7 +105,7 @@ class Login extends Component {
                                                handler={this.handleChangeName}/>
                                     <InputForm type="password" placeholder="Contraseña" icon={faKey}
                                                handler={this.handleChangePass}/>
-                                    <Button variant="none" id={"btnclick"} onClick={this.props.handleSubmit} className="prim w-100" type="submit">
+                                    <Button variant="none" id={"btnclick"}  className="prim w-100" type="submit">
                                         {this.state.showSpinner &&
                                         <Spinner ref="spinner" as="span" className="mr-2" animation="grow" size="sm"/>
                                         }
